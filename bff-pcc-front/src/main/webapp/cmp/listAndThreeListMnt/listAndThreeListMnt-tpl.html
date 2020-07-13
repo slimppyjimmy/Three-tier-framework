@@ -1,0 +1,72 @@
+<div class="fullHeight"
+     config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "945e76f6-79af-4738-8825-6f9d097bc021"
+                , "source": "list"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "childlist"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "childtree"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="fullHeight {{::param1.class ? param1.class : 'col-md-3'}}"
+         list-mnt
+         config='{
+              "id": "list"
+            , "messages": [
+                {
+                      "type": "out"
+                    , "name": "nodeChanged"
+                    , "id": "945e76f6-79af-4738-8825-6f9d097bc021"
+                }
+            ]
+         }'
+         param="param1"
+    >
+    </div>
+    <div class="{{::param2.class ? param2.class : param3.class ? param3.class : 'col-md-9'}}"
+    >
+        <div list-mnt class="halfHeight gap-vertical"
+             config='{
+                  "id": "childlist"
+                , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "945e76f6-79af-4738-8825-6f9d097bc021"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param2">
+        </div>
+        <div tree-mnt class="halfHeight"
+             config='{
+                  "id": "childtree"
+                , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "945e76f6-79af-4738-8825-6f9d097bc021"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param3"
+        >
+        </div>
+    </div>
+</div>

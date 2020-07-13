@@ -1,0 +1,7 @@
+
+<div ng-controller="UiGridDemo2Controller">
+    <div id="grid1" ui-grid="gridOptions"  ui-grid-pagination class="grid"></div>
+    <div ng-if='columnChanged'>
+        Column Visibility Changed - name: {{ columnChanged.name }} visible: {{ columnChanged.visible }}
+    </div>
+</div>

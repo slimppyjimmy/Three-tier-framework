@@ -1,0 +1,74 @@
+{
+  "root": [
+    {
+      "icon": "fa fa-home",
+      "templateUrl":"template/content/tplHome/home.html",
+      "params":"{'name':'home','title':'主页'}",
+      "level-1": true
+    },
+    {
+      "abstract": true,
+      "icon": "fa fa-edit",
+      "template": "<ui-view/>",
+      "params":"{'name':'approve','title':'业务审批'}",
+      "level-1": true,
+      "submenu": [
+        {
+          "templateUrl":"template/content/tplAdmin/new.html",
+          "params":"{'name':'approve.new','title':'新建'}",
+          "level-2": true
+        },
+        {
+          "templateUrl":"template/content/tplAdmin/manage.html",
+          "params":"{'name':'approve.handling','title':'在办箱'}",
+          "level-2": true
+        },
+        {
+          "templateUrl":"template/content/tplAdmin/delete.html",
+          "params":"{'name':'approve.completed','title':'已办箱'}",
+          "level-2": true
+        }
+      ]
+    },
+    {
+      "abstract": true,
+      "icon": "fa fa-tachometer",
+      "template": "<ui-view/>",
+      "params":"{'name':'system','title':'系统维护'}",
+      "level-1": true,
+      "submenu": [
+        {
+          "abstract": true,
+          "template": "<ui-view/>",
+          "params":"{'name':'system.admin','title':'角色管理'}",
+          "level-2": true,
+          "submenu": [
+            {
+              "templateUrl":"template/content/tplAdmin/new.html",
+              "params":"{'name':'system.admin.new','title':'新建'}",
+              "level-3": true
+            },
+            {
+              "templateUrl":"template/content/tplAdmin/manage.html",
+              "params":"{'name':'system.admin.manage','title':'管理'}",
+              "level-3": true
+            },
+            {
+              "templateUrl":"template/content/tplAdmin/delete.html",
+              "params":"{'name':'system.admin.delete','title':'删除'}",
+              "level-3": true
+            }
+          ]
+        }
+      ]
+    }
+
+  ],
+  "config":{
+    "minimized":false,
+    "hover":false,
+    "highlight":false,
+    "fixed":false,
+    "compact":false
+  }
+}

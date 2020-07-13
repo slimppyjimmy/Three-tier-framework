@@ -1,0 +1,20 @@
+<a uib-dropdown-toggle class = dropdown-toggle>
+    <i class = "ace-icon fa fa-tasks"></i>
+    <span class = "badge badge-grey"
+          ng-bind = navData.tasks.count>
+    </span>
+</a>
+<ul class = "dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+    <li class = dropdown-header><i class = "ace-icon fa fa-check"></i> {{navData.tasks.count}} 处理进度</li>
+    <li class = dropdown-content ace-scroll options = "{'size': 200, 'mouseWheelLock': true, 'reset': false}">
+        <ul class = "dropdown-menu dropdown-navbar">
+            <li ng-repeat = "task in navData.tasks.latest"><a>
+                <div class = clearfix><span class = pull-left>{{task.title}}</span> <span class = pull-right>{{task.percentage}}%</span>
+                </div>
+                <uib-progressbar ng-class = "['progress-mini' , task['progress-class'] || '']" value = task.percentage
+                                 type = "{{task['progress-bar-type']}}"></uib-progressbar>
+            </a></li>
+        </ul>
+    </li>
+    <li class = dropdown-footer><a>查看详细信息 <i class = "ace-icon fa fa-arrow-right"></i></a></li>
+</ul>

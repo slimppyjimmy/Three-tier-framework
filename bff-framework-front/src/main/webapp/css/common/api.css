@@ -1,0 +1,34 @@
+
+/*设置全局像素尺寸，采用rem作为单位*/
+html{
+    font-size: 14px;
+    font-size: 87.5%;
+}
+/*存放全局样式类-GLOBAL*/
+html .navbar{
+    height:3.214rem;
+}
+.float-left{
+    float:left;
+}
+.float-right{
+    float:right;
+}
+.float-clear{
+    clear:both;
+}
+.padding-0{
+    padding:0;
+}
+.padding-left-0{
+    padding-left:0;
+}
+.padding-right-0{
+    padding-right:0;
+}
+.padding-top-0{
+    padding-top:0;
+}
+.padding-bottom-0{
+    padding-bottom:0;
+}

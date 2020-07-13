@@ -1,0 +1,243 @@
+<div ng-controller="userDashBoard"
+>
+    <div class="row userBashBoard" >
+        <div class="col-md-6" style="margin-top: 10px;" >
+            <div class="col-md-12" style="display: flex;flex-direction:row;justify-content: space-around">
+                <div class="card col-md-4 bashTip" style="display: flex;padding-right: 10px" >
+                    <div style="height: 80px;width: 140px;display: block;text-align: center">
+                        <span class="bashboard" style="color: rgb(56,191,186) !important;">&#xe625;</span>
+                    </div>
+                    <div class="cardContent" style="height: 80px;width: 120px;">
+                        <div class="bashTitle">客户数量</div>
+                        <p class="bashnumber">{{::_customerNumber}}</p>
+                    </div>
+                </div>
+                <div class="card col-md-4 bashTip" style="display: flex;padding-left: 5px;padding-right: 5px" >
+                    <div style="height: 80px;width: 140px;display: block;text-align: center">
+                        <span class="bashboard" style="color: rgb(45,143,245) !important;">&#xe639;</span>
+                    </div>
+                    <div class="cardContent" style="height: 80px;width: 120px;">
+                        <div class="bashTitle" style="">项目数量</div>
+                        <p class="bashnumber">90</p>
+                    </div>
+                </div>
+                <div class="card col-md-4 bashTip" style="display: flex;padding-left: 10px" >
+                    <div style="height: 80px;width: 140px;display: block;text-align: center">
+                        <span class="bashboard" style="color: rgb(238,55,90) !important;">&#xe625;</span>
+                    </div>
+                    <div class="cardContent" style="height: 80px;width: 120px;">
+                        <div class="bashTitle">即将过期</div>
+                        <p class="bashnumber">{{::_expirelic}}</p>
+                    </div>
+                </div>
+            </div>
+            <div list-mnt
+                 class="col-md-12"
+                 style="margin-top: 20px"
+                 config='{}'
+                 param='
+        {
+            "title": "快捷功能管理"
+            , "idfield": "guid"
+            , "listUrl" :"u/listUserShortcut"
+            , "buttons": [
+                 {
+                    "type": "add"
+                    ,"name": "添加"
+                    ,"isPermitted":"true"
+
+                     , "model":"select"
+                    , "loadUrl": "/u/shortcutAddPrepare"
+                    ,"resourceGuid":"fcd782f3-967c-4385-ae6c-8737dd6513ac"
+                    , "executeUrl": "/u/shortcutAdd"
+                    ,"icon": ""
+                    ,"css": ""
+                    ,"title": "添加快捷功能"
+                    ,"templateUrl": "buz/userMnt/userShortcutSelector.html"
+                    ,"success": {
+                        "message": "新建数据已保存"
+                    }
+                }
+
+            ]
+            , "grid": {
+                "css": "",
+                "idfield": "guid",
+                "columns": [
+                    {
+                       "css": "width:30%;",
+                        "header": {
+                            "name": "快捷功能名称",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "name",
+                            "style": "text-align:left"
+                        }
+                    }
+                    ,{
+                       "css": "width:30%;",
+                        "header": {
+                            "name": "排序号",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "sortNo",
+                            "style": "text-align:left"
+                        }
+                    }
+                ]
+                , "buttons": [
+                    {
+                    "type": "modify"
+                    , "loadUrl": "/u/shortcutModifyParpare?guid=:guid"
+                    , "executeUrl": "/u/shortcutModify"
+                    , "name": "修改"
+                    , "resourceGuid":"ec3f0f71-dc85-43c4-adaf-91faf7279806"
+                    , "isPermitted":"true"
+                    , "icon": ""
+                    , "style": ""
+                    , "title": "修改域"
+                    , "templateUrl": "buz/user/userShortcutModify.html"
+                    , "success": {
+                        "message": "修改成功!"
+                        , "time": 1000
+                    }
+                }
+                   , {
+                        "type": "postOneRefresh"
+                        , "name": "上移"
+                        , "isPermitted":"true"
+                        , "executeUrl": "u/shortcutChangeSortUp?guid=:guid"
+                    }
+                     , {
+                        "type": "postOneRefresh"
+                        , "name": "下移"
+                        , "isPermitted":"true"
+                        , "executeUrl": "u/shortcutChangeSortDown?guid=:guid"
+                    }
+                    , {
+                      "type": "delete"
+                    , "name": "删除"
+                    , "resourceGuid":"a49911ad-3fc5-43c2-9dd8-0c6aa44925cc"
+                    , "isPermitted":"true"
+                    , "icon": "fa-minus"
+                    , "css": ""
+                    , "title": "删除快捷功能"
+                    , "executeUrl": "u/shortcutDelete"
+                    , "success": {
+                        "message": "删除成功!"
+                        , "time": 1000
+                    }
+                }
+
+                ]
+            }
+
+        }
+'>
+            </div>
+            <!--            <div class="col-md-12" style="margin-top: 20px ">-->
+            <!--                <div class="col-md-12" style="display: flex;flex-direction: row;justify-content:space-between;line-height: 45px">-->
+            <!--                    <span class="cardTitle">快捷方式</span>-->
+            <!--                    <span class="addfont"-->
+            <!--                          style="font-size: 30px !important;"-->
+            <!--                          ng-click="toAdd()"-->
+            <!--                    >&#xe68a;</span>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="col-md-12 shortcutcontent" style="display: flex;flex-wrap:wrap; flex-direction:row;margin-top: 20px;justify-content:space-between"
+            >
+                <div  ng-repeat="property in shortcutdata" style="text-align: center">
+                    <div class="bashcard" style="display: inline-block">
+                        <div style="height: 100px;width: 100px;text-align: center;line-height: 100px">
+                            <span class="shortcut" >
+                                &#xe601;
+                            </span>
+
+                        </div>
+                        <p>{{::property.name}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div list-mnt
+             class="col-md-6"
+             config='{}'
+             param='
+        {
+            "title": "未下载许可证"
+            , "listUrl": ":licManager/app/pageSearch"
+            , "idfield": "guid"
+            ,"checkbox":true
+            , "pagination": {
+                    "pageSize": 10
+                    , "class": ""
+             }
+            , "grid": {
+                "style": "",
+                "checkbox": true,
+                "buttons":[
+                    {
+                        "type": "delete",
+                         "isPermitted":"true",
+                        "name": "下载",
+                        "icon": "",
+                        "style": "",
+                        "loadUrl": ""
+                        , "prepareUrl": ""
+                        , "executeUrl": ":licManager/app/delete"
+                        , "confirm": {
+                        "message": "确认删除?"
+                          }
+                       , "success": {
+                        "message": "删除成功!"
+                        , "time": 1000
+                    }
+                    }
+                ],
+                "columns": [
+                    {
+                        "style": "width:20%;",
+                        "header": {
+                            "name": "项目名称",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "projectName",
+                            "style": "text-align:center"
+                        }
+                    }
+                    , {
+                        "style": "width:20%;",
+                        "header": {
+                            "name": "产品名称",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "productName",
+                            "style": "text-align:center"
+                        }
+                    }
+                    , {
+                        "style": "width:20%;",
+                        "header": {
+                            "name": "过期日",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "expireDate",
+                            "style": "text-align:center"
+                        }
+                    }
+                ]
+            }
+        }
+'
+        >
+
+        </div>
+    </div>
+
+</div>

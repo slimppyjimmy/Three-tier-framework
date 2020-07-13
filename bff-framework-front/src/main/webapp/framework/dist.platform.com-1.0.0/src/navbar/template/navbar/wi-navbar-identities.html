@@ -1,0 +1,6 @@
+<a uib-dropdown-toggle class = dropdown-toggle><span class = user-info><small>切换身份</small></span> <i
+        class = "ace-icon fa fa-caret-down"></i></a>
+<ul class = "user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+    <li ng-repeat = "identity in navData.identities" ng-click = configData.callbacks.runas(identity)><a><i
+            class = "ace-icon fa fa-user"></i>{{identity.name}}</a></li>
+</ul>

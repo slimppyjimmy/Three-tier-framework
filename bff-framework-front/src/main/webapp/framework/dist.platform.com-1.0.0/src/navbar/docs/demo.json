@@ -1,0 +1,7 @@
+{
+    "cname":"navbar",
+    "discribe":"navbar(头部导航栏)",
+    "demos":[
+        {"demoDiscribe":"展示","html":"navbar/docs/demo1.html","js":"navbar/docs/demo1.js"}
+    ]
+}

@@ -1,0 +1,472 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: wanggb
+  Date: 2016/7/1
+  Time: 16:26
+  To change this template use File | Settings | File Templates.
+-->
+
+<html lang="en" ng-app="NavbarApp">
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title ng-bind-template="{{pageTitle || 'Welcome'}} - navbar">Welcome - navbar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="../../lib/css/dist-platform-lib-all-1.0.0.css"/>
+
+	<!--<link rel="stylesheet" href="bootstrap.css" />-->
+</head>
+<body ng-controller="MainController" ng-class="bodySkin(4)" >
+
+<div class="main-container" ng-class="{'container': ace.settings.container}">
+
+    <wi-side-bar sidebar="sidebar" skin-style="bodystyle" side-config="sideConfig" callbacks="callbacks"></wi-side-bar>
+
+    <!--<div id="sidebar" class="sidebar responsive" ng-controller="SidebarCtrl"
+         ace-sidebar props="ace.sidebar" scroll="true" hover="true"
+         ng-class="{'menu-min': ace.sidebar.minimized, 'sidebar-fixed': ace.settings.sidebar, 'compact': ace.settings.compact}"
+         ng-include="'template/wisidebar/sidebar.html'"></div>
+-->
+</div>
+
+<!--lib-->
+<script type="text/javascript" src="../../lib/js/dist-platform-lib-all-1.0.0.js"></script>
+<script type="text/javascript" src="wisidebar.js" ></script>
+<!--controllers-->
+<script>
+    var app=angular.module('NavbarApp',['dist.ui.sidebar','ace.directives','ngStorage'])
+            .controller('MainController', function ($scope, $rootScope, $http, $timeout, $location/**, cfpLoadingBar*/) {
+
+                $scope.sidebar= {
+                    "root": [
+                        {
+                            "url": "home",
+                            "icon": "fa fa-home",
+                            "title": "主页",
+                            "controller": "",
+                            "name": "home",
+                            "level-1": true
+                        },
+                        {
+                            "abstract": true,
+                            "title": "业务审批",
+                            "icon": "fa fa-edit",
+                            "template": "<ui-view/>",
+                            "name": "approve",
+                            "url": "approve",
+                            "level-1": true,
+                            "submenu": [
+                                {
+                                    "url": "approve.new",
+                                    "title": "新建",
+                                    "name": "approve.new",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "approve.handling",
+                                    "title": "在办箱",
+                                    "name": "approve.handling",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "approve.completed",
+                                    "title": "已办箱",
+                                    "name": "approve.completed",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "approve.abolished",
+                                    "title": "废件箱",
+                                    "name": "approve.abolished",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "approve.retreated",
+                                    "title": "退件箱",
+                                    "controller": "",
+                                    "name": "approve.retreated",
+                                    "level-2": true
+                                }
+                            ]
+                        },
+                        {
+                            "abstract": true,
+                            "title": "系统维护",
+                            "icon": "fa fa-tachometer",
+                            "template": "<ui-view/>",
+                            "name": "system",
+                            "url": "system",
+                            "level-1": true,
+                            "submenu": [
+                                {
+                                    "abstract": true,
+                                    "title": "角色管理",
+                                    "template": "<ui-view/>",
+                                    "name": "system.admin",
+                                    "url": "system.admin",
+                                    "level-2": true,
+                                    "submenu": [
+                                        {
+                                            "url": "system.admin.new",
+                                            "title": "新建",
+                                            "controller": "",
+                                            "name": "system.admin.new",
+                                            "level-3": true
+                                        },
+                                        {
+                                            "url": "system.admin.manage",
+                                            "title": "管理",
+                                            "controller": "",
+                                            "name": "system.admin.manage",
+                                            "level-3": true
+                                        },
+                                        {
+                                            "url": "system.admin.delete",
+                                            "title": "删除",
+                                            "controller": "",
+                                            "name": "system.admin.delete",
+                                            "level-3": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "abstract": true,
+                            "title": "代码测试",
+                            "icon": "fa fa-tachometer",
+                            "template": "<ui-view/>",
+                            "name": "debug",
+                            "url": "debug",
+                            "level-1": true,
+                            "submenu": [
+                                {
+                                    "url": "debug.factory",
+                                    "title": "服务通信",
+                                    "controller": "",
+                                    "name": "debug.factory",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "debug.iframe",
+                                    "title": "IFRAME",
+                                    "controller": "",
+                                    "name": "debug.iframe",
+                                    "level-2": true
+                                },
+                                {
+                                    "abstract": true,
+                                    "title": "TABLE",
+                                    "icon": "",
+                                    "template": "<ui-view/>",
+                                    "name": "debug.table",
+                                    "url": "debug.table",
+                                    "level-2": true,
+                                    "submenu": [
+                                        {
+                                            "url": "debug.table.smart",
+                                            "title": "Smart",
+                                            "controller": "",
+                                            "name": "debug.table.smart",
+                                            "level-3": true
+                                        },
+                                        {
+                                            "url": "debug.table.uiGridDemo1",
+                                            "title": "UiGridDemo1",
+                                            "controller": "",
+                                            "name": "debug.table.uiGridDemo1",
+                                            "level-3": true
+                                        },
+                                        {
+                                            "url": "debug.table.uiGridDemo2",
+                                            "title": "UiGridDemo2",
+                                            "controller": "",
+                                            "name": "debug.table.uiGridDemo2",
+                                            "level-3": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "url": "debug.pagination",
+                                    "title": "Pagination",
+                                    "controller": "",
+                                    "name": "debug.pagination",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "debug.chart",
+                                    "title": "Chart",
+                                    "controller": "",
+                                    "name": "debug.chart",
+                                    "level-2": true
+                                },
+                                {
+                                    "url": "debug.developNorm",
+                                    "title": "开发规范",
+                                    "controller": "",
+                                    "name": "debug.developNorm",
+                                    "level-2": true
+                                }
+                            ]
+                        }
+                    ]
+                };
+                $scope.bodystyle=4;
+                $scope.sideConfig={
+                    minimized:false,
+                    hover:false,
+                    highlight:true,
+                    fixed:false,
+                    compact:false,
+                };
+                   //nction is used in body's ng-class directive to determine and apply selected user skin!
+                $scope.bodySkin = function(index) {
+                    var skin =index;
+                    if( skin == 1 || skin == 2 ) return 'skin-'+skin;
+                    else if( skin == 3 ) return 'no-skin skin-3';
+                    return 'no-skin';
+                };
+                $scope.callbacks={
+                    $stateChangeStart:function(e){
+                        console.log("$stateChangeStart");
+                    },
+                    $stateChangeSuccess:function(e){
+                        console.log("$stateChangeSuccess");
+                    },
+                    $stateChangeError:function(e){
+                        console.log("$stateChangeError");
+                    }
+                }
+            });
+
+
+   /* app.controller('SidebarCtrl', function($scope, $state, $rootScope, $timeout, SAVE_SETTING, $localStorage, StorageGet) {
+        //some general variables
+        $scope.ace = $scope.ace || {};
+        //sidebar variables
+        $scope.ace.sidebar = {
+            'minimized': false,//used to collapse/expand
+            'toggle': false,//used to toggle in/out mobile menu
+            'reset': false//used to reset sidebar (for sidebar scrollbars, etc)
+        };
+        //this fu
+
+        if(SAVE_SETTING) {
+            StorageGet.load($scope, 'ace.sidebar');//load previously saved sidebar properties
+            $scope.$watch('ace.sidebar.minimized', function(newValue) {
+                $localStorage['ace.sidebar']['minimized'] = newValue;
+            });
+        }
+
+
+        ////
+        //make a list of sidebar items using router states in angular/js/app.main.js
+       $scope.sidebar= {
+            "root": [
+                {
+                    "url": "home",
+                    "icon": "fa fa-home",
+                    "title": "主页",
+                    "controller": "",
+                    "name": "home",
+                    "level-1": true
+                },
+                {
+                    "abstract": true,
+                    "title": "业务审批",
+                    "icon": "fa fa-edit",
+                    "template": "<ui-view/>",
+                    "name": "approve",
+                    "url": "approve",
+                    "level-1": true,
+                    "submenu": [
+                        {
+                            "url": "approve.new",
+                            "title": "新建",
+                            "name": "approve.new",
+                            "level-2": true
+                        },
+                        {
+                            "url": "approve.handling",
+                            "title": "在办箱",
+                            "name": "approve.handling",
+                            "level-2": true
+                        },
+                        {
+                            "url": "approve.completed",
+                            "title": "已办箱",
+                            "name": "approve.completed",
+                            "level-2": true
+                        },
+                        {
+                            "url": "approve.abolished",
+                            "title": "废件箱",
+                            "name": "approve.abolished",
+                            "level-2": true
+                        },
+                        {
+                            "url": "approve.retreated",
+                            "title": "退件箱",
+                            "controller": "",
+                            "name": "approve.retreated",
+                            "level-2": true
+                        }
+                    ]
+                },
+                {
+                    "abstract": true,
+                    "title": "系统维护",
+                    "icon": "fa fa-tachometer",
+                    "template": "<ui-view/>",
+                    "name": "system",
+                    "url": "system",
+                    "level-1": true,
+                    "submenu": [
+                        {
+                            "abstract": true,
+                            "title": "角色管理",
+                            "template": "<ui-view/>",
+                            "name": "system.admin",
+                            "url": "system.admin",
+                            "level-2": true,
+                            "submenu": [
+                                {
+                                    "url": "system.admin.new",
+                                    "title": "新建",
+                                    "controller": "",
+                                    "name": "system.admin.new",
+                                    "level-3": true
+                                },
+                                {
+                                    "url": "system.admin.manage",
+                                    "title": "管理",
+                                    "controller": "",
+                                    "name": "system.admin.manage",
+                                    "level-3": true
+                                },
+                                {
+                                    "url": "system.admin.delete",
+                                    "title": "删除",
+                                    "controller": "",
+                                    "name": "system.admin.delete",
+                                    "level-3": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "abstract": true,
+                    "title": "代码测试",
+                    "icon": "fa fa-tachometer",
+                    "template": "<ui-view/>",
+                    "name": "debug",
+                    "url": "debug",
+                    "level-1": true,
+                    "submenu": [
+                        {
+                            "url": "debug.factory",
+                            "title": "服务通信",
+                            "controller": "",
+                            "name": "debug.factory",
+                            "level-2": true
+                        },
+                        {
+                            "url": "debug.iframe",
+                            "title": "IFRAME",
+                            "controller": "",
+                            "name": "debug.iframe",
+                            "level-2": true
+                        },
+                        {
+                            "abstract": true,
+                            "title": "TABLE",
+                            "icon": "",
+                            "template": "<ui-view/>",
+                            "name": "debug.table",
+                            "url": "debug.table",
+                            "level-2": true,
+                            "submenu": [
+                                {
+                                    "url": "debug.table.smart",
+                                    "title": "Smart",
+                                    "controller": "",
+                                    "name": "debug.table.smart",
+                                    "level-3": true
+                                },
+                                {
+                                    "url": "debug.table.uiGridDemo1",
+                                    "title": "UiGridDemo1",
+                                    "controller": "",
+                                    "name": "debug.table.uiGridDemo1",
+                                    "level-3": true
+                                },
+                                {
+                                    "url": "debug.table.uiGridDemo2",
+                                    "title": "UiGridDemo2",
+                                    "controller": "",
+                                    "name": "debug.table.uiGridDemo2",
+                                    "level-3": true
+                                }
+                            ]
+                        },
+                        {
+                            "url": "debug.pagination",
+                            "title": "Pagination",
+                            "controller": "",
+                            "name": "debug.pagination",
+                            "level-2": true
+                        },
+                        {
+                            "url": "debug.chart",
+                            "title": "Chart",
+                            "controller": "",
+                            "name": "debug.chart",
+                            "level-2": true
+                        },
+                        {
+                            "url": "debug.developNorm",
+                            "title": "开发规范",
+                            "controller": "",
+                            "name": "debug.developNorm",
+                            "level-2": true
+                        }
+                    ]
+                }
+            ]
+        }
+
+        //these are used to determine if a sidebar item is 'open' or 'active'
+        $rootScope.subMenuOpen = {};
+        $rootScope.isSubOpen = function(name) {
+            if( !(name in $rootScope.subMenuOpen) ) $rootScope.subMenuOpen[name] = false;
+            return $rootScope.subMenuOpen[name];
+        }
+        $rootScope.isActiveItem = function(name) {
+            return $rootScope.activeItems ? $rootScope.activeItems[name] : false;
+        }
+
+    });
+
+    app.service('StorageGet', function($localStorage) {
+
+        this.load = function($scope, name) {
+            $localStorage[name] = $localStorage[name] || {};
+
+            var $ref = $scope;
+            var parts = name.split('.');//for example when name is "ace.settings" or "ace.sidebar"
+            for(var i = 0; i < parts.length; i++) $ref = $ref[parts[i]];
+            //now $ref refers to $scope.ace.settings
+
+            for(var prop in $localStorage[name]) if($localStorage[name].hasOwnProperty(prop)) {
+                $ref[prop] = $localStorage[name][prop];
+            }
+        };
+
+    });
+*/
+
+</script>
+</body>
+</html>

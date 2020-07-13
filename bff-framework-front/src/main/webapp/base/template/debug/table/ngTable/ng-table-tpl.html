@@ -1,0 +1,33 @@
+<table ng-table-dynamic="demo.tableParams with demo.cols" class="table table-bordered table-condensed table-hover editable-table demoTable" ng-form="demo.tableForm" disable-filter="demo.isAdding" demo-tracked-table="demo.tableTracker">
+    <colgroup>
+        <col width="65%" />
+        <col width="10%" />
+        <col width="10%" />
+        <col width="15%" />
+    </colgroup>
+    <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+        <td ng-repeat="col in $columns" ng-class="rowForm[col.field].$dirty ? 'bg-warning' : ''" ng-form="{{col.field}}" demo-tracked-table-cell>
+            <span ng-if="col.dataType !== 'command' && !row.isEditing" class="editable-text">{{row[col.field]}}</span>
+            <div ng-if="col.dataType !== 'command' && row.isEditing" class="controls" ng-class="rowForm[col.field].$invalid && rowForm[col.field].$dirty ? 'has-error' : ''" ng-switch="col.dataType">
+                <input ng-switch-default type="text" name="{{col.field}}" ng-model="row[col.field]" class="editable-input form-control input-sm" required />
+                <input ng-switch-when="number" type="number" name="{{col.field}}" ng-model="row[col.field]" class="editable-input form-control input-sm" required />
+            </div>
+            <div ng-if="col.dataType === 'command'">
+                <button class="btn btn-primary btn-sm" ng-click="demo.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+                <button class="btn btn-default btn-sm" ng-click="demo.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button class="btn btn-danger btn-sm" ng-click="demo.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+            </div>
+
+        </td>
+    </tr>
+</table>
+
+
+
+
+    <div class="brn-group pull-right">
+        <button class="btn btn-default" ng-click="demo.add()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>

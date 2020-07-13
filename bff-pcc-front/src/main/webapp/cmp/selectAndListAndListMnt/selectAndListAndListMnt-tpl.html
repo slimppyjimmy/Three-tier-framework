@@ -1,0 +1,109 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "3a552435-220f-4d80-97d1-2e9f83ff19bf"
+                , "source": "select"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "e3012560-dc35-4de5-8bfb-766ac9f04f63"
+                , "source": "tree"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "list"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "dfcde22d-238d-40c8-8b14-e9ac3fbd0282"
+                , "source": "list"
+                , "sourceMessageName": "nodeModified"
+                , "targets": [
+                    {
+                          "target": "tree"
+                        , "targetMessageName": "dataModified"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="{{::param1.class ? param1.class : param2.class ? param2.class : 'col-md-3'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                      "id": "top"
+                    , "messages": [
+                        {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "3a552435-220f-4d80-97d1-2e9f83ff19bf"
+                        }
+                    ]
+                 }'
+                 param="param1"
+            >
+            </div>
+            <div list-mnt
+                 config='{
+                  "id": "left"
+                , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "3a552435-220f-4d80-97d1-2e9f83ff19bf"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                    , {
+                          "type": "out"
+                        , "name": "nodeChanged"
+                        , "id": "e3012560-dc35-4de5-8bfb-766ac9f04f63"
+                    }
+                    , {
+                          "type": "in"
+                        , "name": "dataModified"
+                        , "id": "dfcde22d-238d-40c8-8b14-e9ac3fbd0282"
+                        , "handler": "_handelMessage_dataModified"
+                    }
+                ]
+             }'
+                 param="param2"
+            >
+            </div>
+        </div>
+   </div>
+    <div class="{{::param3.class ? param3.class : 'col-md-9'}}"
+         list-mnt
+         config='{
+              "id": "right"
+            , "messages": [
+                {
+                      "type": "in"
+                    , "name": "parentChanged"
+                    , "id": "e3012560-dc35-4de5-8bfb-766ac9f04f63"
+                    , "handler": "_handelMessage_parentChanged"
+                }
+                , {
+                      "type": "out"
+                    , "name": "nodeModified"
+                    , "id": "dfcde22d-238d-40c8-8b14-e9ac3fbd0282"
+                }
+            ]
+         }'
+         param="param3">
+    </div>
+</div>

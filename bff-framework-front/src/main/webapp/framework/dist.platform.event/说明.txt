@@ -1,0 +1,19 @@
+/**
+ * Created by wanggb on 2016/7/20.
+ */
+
+1 说明：dist.platform/dist.platform.event 平台旨在设计程序通信服务
+
+2 平台包含两个服务“DataService”和“BroadcastService”，均写在“dist.data.service”module 中
+服务说明：
+    （1）DataService服务返回的方法或对象：
+            Data,//对象，数据根对象
+            bindScope,//方法，绑定到当前作用域
+            getValue,//方法，获取目标标识下对象值
+            setValue,//方法，设置目标标识下对象值
+            registerWatcher,//方法，注册回调函数
+            getPropertyInfo,//方法，返回属性列表信息
+    （2）BroadcastService服务返回的方法和对象：
+            broadcastData,//方法，发送广播
+            onBroadcastData,//方法，注册监听函数
+            getURLInfo,//方法，获取列表信息

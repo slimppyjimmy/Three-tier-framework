@@ -1,0 +1,23 @@
+<div ng-controller="PaginationDemo1Controller">
+
+     <!--基本显示样式-->
+	 <p>不添加省略</p>
+    <ul wi-pagination total-items="totalItems" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></ul>
+    <br/>
+	
+	  <!--自定义翻页图标-->
+	  <p>自定义翻页图标</p>
+    <ul wi-pagination boundary-links="true" max-size="maxSize" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;"
+        next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChanged()"></ul>
+    <br/>
+	
+	<!--自定义翻页字符-->
+	 <p>自定义翻页字符</p>
+    <ul wi-pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage"></ul>
+    <br/>
+	
+	<!--隐藏翻页按钮-->
+	 <p>隐藏翻页按钮</p>
+    <ul wi-pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></ul>
+    <br/>
+</div>

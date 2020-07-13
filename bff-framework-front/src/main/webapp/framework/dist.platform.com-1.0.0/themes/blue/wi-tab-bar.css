@@ -1,0 +1,85 @@
+
+html .wi-tab-bar-active{
+    border-bottom:solid 2px !important;
+}
+
+html .wi-tab-bar-bordernone{
+    border:none;
+    outline:none !important;
+}
+
+.wi-tab-bar-buttonmargin{
+    margin-right:2px;
+}
+
+.wi-tab-width-100{
+    width:100%;
+}
+.wi-tab-padding-0{
+    padding:0;
+}
+
+.wi-tab-scrollshow{
+    margin-left:20px;
+}
+
+html .x-scroll-enable .mCSB_scrollTools_horizontal .mCSB_draggerRail{
+    background:transparent !important;
+}
+
+html .x-scroll-enable .mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{
+    background:transparent !important;
+}
+html .x-scroll-enable .mCSB_scrollTools.mCSB_scrollTools_horizontal{
+    height:2px;
+}
+
+html .wi-tab-alabel{
+    text-decoration:none;
+}
+
+.wi-tab-bar-lefticon{
+    text-align:right;
+    float:left;
+    width:35px;
+}
+.wi-tab-bar-lefticon button{
+    line-height:27px;
+}
+
+.wi-tab-bar-righticon{
+    text-align:left;
+    float:right;
+    width:35px;
+}
+
+.wi-tab-bar-righticon button{
+    line-height:27px;
+}
+.wi-tab-bar-content{
+    text-align:left;
+    overflow-x:auto;
+    height:40px;
+    overflow-y:hidden;
+    white-space: nowrap;
+    margin:0 35px;
+}
+.wi-tab-bar-floatclear{
+    clear:both;
+}
+
+.wi-tab-bar-showicon .wi-tab-bar-content{
+    margin:0;
+}
+
+
+.wi-tab-bar-close:hover i{
+    visibility:visible;
+}
+.wi-tab-bar-close i{
+    position: absolute;
+    margin-left: -10px;
+    margin-top: 2px;
+    visibility:hidden;
+}
+

@@ -1,0 +1,52 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "919a342e-ca07-4862-ab36-04fa93604a5e"
+                , "source": "select"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div>
+        <div simple-select class="gap-vertical" auto-padding
+             config='{
+                  "id": "top"
+                , "messages": [
+                    {
+                          "type": "out"
+                        , "name": "nodeChanged"
+                        , "id": "919a342e-ca07-4862-ab36-04fa93604a5e"
+                    }
+                ]
+             }'
+             param="param1"
+        >
+        </div>
+        <div list-mnt
+             config='{
+                  "id": "left"
+                , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "919a342e-ca07-4862-ab36-04fa93604a5e"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param2"
+        >
+        </div>
+    </div>
+</div>

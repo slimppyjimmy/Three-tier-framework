@@ -1,0 +1,135 @@
+<div
+        config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "11f59f3c-e12f-4fb9-a51f-03c160f79dc6"
+                , "source": "tree"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "list1"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "e8a39890-ae37-4f56-9bce-f4f55e6a0cb6"
+                , "source": "list1"
+                , "sourceMessageName": "nodeModified"
+                , "targets": [
+                    {
+                          "target": "tree"
+                        , "targetMessageName": "dataModified"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "25ea86a0-bc3c-4840-a785-a9ad9350e729"
+                , "source": "list1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "list2"
+                        , "targetMessageName": "parentChanged"
+                    },
+                    {
+                          "target": "list3"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class=" {{::param1.class ? param1.class : param2.class ? param2.class : 'col-md-4'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div list-mnt class=""
+                 config='{
+                      "id": "tree"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "b8a5430f-0bd7-455a-8f0e-36c905a4729b"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "11f59f3c-e12f-4fb9-a51f-03c160f79dc6"
+                        }
+                        , {
+                              "type": "in"
+                            , "name": "dataModified"
+                            , "id": "e8a39890-ae37-4f56-9bce-f4f55e6a0cb6"
+                            , "handler": "_handelMessage_dataModified"
+                        }
+                    ]
+                 }'
+                 param="param1"
+            >
+            </div>
+        </div>
+    </div>
+    <div class="{{::param3.class ? param3.class : 'col-md-4'}}"
+         tree-mnt
+         config='{
+              "id": "list1"
+            , "messages": [
+                {
+                      "type": "in"
+                    , "name": "parentChanged"
+                    , "id": "11f59f3c-e12f-4fb9-a51f-03c160f79dc6"
+                    , "handler": "_handelMessage_parentChanged"
+                }
+                , {
+                      "type": "out"
+                    , "name": "nodeModified"
+                    , "id": "e8a39890-ae37-4f56-9bce-f4f55e6a0cb6"
+                }
+                , {
+                      "type": "out"
+                    , "name": "nodeChanged"
+                    , "id": "25ea86a0-bc3c-4840-a785-a9ad9350e729"
+                }
+            ]
+         }'
+         param="param2">
+    </div>
+
+    <div class="{{::param4.class ? param4.class : param5.class ? param5.class : 'col-md-4'}}">
+        <div list-mnt   class="halfHeight"
+             config='{
+              "id": "list2"
+            , "messages": [
+                {
+                      "type": "in"
+                    , "name": "parentChanged"
+                    , "id": "25ea86a0-bc3c-4840-a785-a9ad9350e729"
+                    , "handler": "_handelMessage_parentChanged"
+                }
+            ]
+         }'
+             param="param3">
+        </div>
+        <div list-mnt   class="halfHeight"
+             config='{
+              "id": "list3"
+            , "messages": [
+                {
+                      "type": "in"
+                    , "name": "parentChanged"
+                    , "id": "25ea86a0-bc3c-4840-a785-a9ad9350e729"
+                    , "handler": "_handelMessage_parentChanged"
+                }
+            ]
+         }'
+             param="param4">
+        </div>
+    </div>
+</div>

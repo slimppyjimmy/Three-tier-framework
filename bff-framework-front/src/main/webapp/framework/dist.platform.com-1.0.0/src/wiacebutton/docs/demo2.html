@@ -1,0 +1,119 @@
+<div ng-controller="WiAce2ButtonController">
+ <div class="row">
+
+ <div class="col-sm-6" id="default-buttons">
+	<h3 class="row header smaller lighter purple">
+		<span class="col-sm-6">
+			Default Buttons
+		</span><!-- /.col -->
+		<span class="col-sm-6">
+			<label class="pull-right inline">
+				<small class="muted smaller-90">Border:</small>
+				<input ng-model="buttonBorder" ng-init="buttonBorder = true" type="checkbox" class="ace ace-switch ace-switch-5" />
+				<span class="lbl middle"></span>
+			</label>
+		</span><!-- /.col -->
+	</h3><!-- /.row -->
+
+	<p>
+		<button class="btn" ng-class="{'no-border': !buttonBorder}">Default </button>
+		<button class="btn btn-primary" ng-class="{'no-border': !buttonBorder}">Primary</button>
+		<button class="btn btn-info" ng-class="{'no-border': !buttonBorder}">Info</button>
+		<button class="btn btn-success" ng-class="{'no-border': !buttonBorder}">Success</button>
+	</p>
+	<p>
+		<button class="btn btn-warning" ng-class="{'no-border': !buttonBorder}">Warning</button>
+		<button class="btn btn-danger" ng-class="{'no-border': !buttonBorder}">Danger</button>
+		<button class="btn btn-inverse" ng-class="{'no-border': !buttonBorder}">Inverse</button>
+		<button class="btn btn-pink" ng-class="{'no-border': !buttonBorder}">Pink</button>
+	</p>
+	<p>
+		<button class="btn btn-purple" ng-class="{'no-border': !buttonBorder}">Purple</button>
+		<button class="btn btn-yellow" ng-class="{'no-border': !buttonBorder}">Yellow</button>
+		<button class="btn btn-grey" ng-class="{'no-border': !buttonBorder}">Grey</button>
+		<button class="btn btn-light" ng-class="{'no-border': !buttonBorder}">Light</button>
+		<button class="btn btn-link">Link</button>
+	</p>
+	
+	<p>
+		<button type="button" class="btn btn-white" ng-class="{'no-border': !buttonBorder}">White</button>
+		<button type="button" class="btn btn-white btn-default" ng-class="{'no-border': !buttonBorder}">Default</button>
+		<button type="button" class="btn btn-white btn-primary" ng-class="{'no-border': !buttonBorder}">Primary</button>
+		<button type="button" class="btn btn-white btn-info" ng-class="{'no-border': !buttonBorder}">Info</button>
+		<button type="button" class="btn btn-white btn-success" ng-class="{'no-border': !buttonBorder}">Success</button>
+		<button type="button" class="btn btn-white btn-warning" ng-class="{'no-border': !buttonBorder}">Warning</button>
+	</p>
+	<p>
+		<button type="button" class="btn btn-white btn-danger btn-sm" ng-class="{'no-border': !buttonBorder}">Danger</button>
+		<button type="button" class="btn btn-white btn-yellow btn-sm" ng-class="{'no-border': !buttonBorder}">Yellow</button>
+		<button type="button" class="btn btn-white btn-pink btn-sm" ng-class="{'no-border': !buttonBorder}">Pink</button>
+		<button type="button" class="btn btn-white btn-purple btn-sm" ng-class="{'no-border': !buttonBorder}">Purple</button>
+		<button type="button" class="btn btn-white btn-inverse btn-sm" ng-class="{'no-border': !buttonBorder}">Inverse</button>
+	</p>
+	
+	<h3 class="header smaller lighter green">Button with Icons</h3>
+	<p>
+		<button class="btn btn-white btn-info btn-bold">
+			<i class="ace-icon fa fa-floppy-o bigger-120 blue"></i> Backup
+		</button>
+		<button class="btn btn-white btn-warning btn-bold">
+			<i class="ace-icon fa fa-trash-o bigger-120 orange"></i> Delete
+		</button>
+		<button class="btn btn-white btn-default btn-round">
+			<i class="ace-icon fa fa-times red2"></i> Cancel
+		</button>
+	</p>
+	<div class="hr hr-dotted hr-16"></div>
+	<p>
+		<button class="btn"><i class="ace-icon fa fa-pencil align-top bigger-125"></i> Default </button>
+		<button class="btn btn-primary"><i class="ace-icon fa fa-flask align-top bigger-125"></i> Primary</button>
+		<button class="btn btn-info">Info <i class="ace-icon fa fa-print  align-top bigger-125 icon-on-right"></i></button>
+	</p>
+	<p>
+		<button class="btn btn-lg btn-success"><i class="ace-icon fa fa-check"></i> Success</button>
+		<button class="btn btn-sm btn-warning"><i class="ace-icon fa fa-fire bigger-110"></i> <span class="bigger-110 no-text-shadow">Warning</span></button>
+		<button class="btn btn-xs btn-danger"><i class="ace-icon fa fa-bolt bigger-110"></i> Danger <i class="ace-icon fa fa-arrow-right icon-on-right"></i></button>
+	</p>
+	<p>
+		<button class="btn btn-info"><i class="ace-icon fa fa-signal icon-only bigger-150"></i></button>
+		<button class="btn btn-warning btn-xs"><i class="ace-icon fa fa-wrench  bigger-110 icon-only"></i></button>		
+		<button class="btn btn-danger btn-sm"><i class="ace-icon fa fa-reply icon-only"></i></button>
+		<button class="btn btn-grey btn-lg"><i class="ace-icon fa fa-trash-o fa-2x icon-only"></i></button>
+	</p>
+ </div><!-- /.col -->
+
+ <div class="col-sm-6">
+	<h3 class="header smaller lighter red">Button Sizing</h3>
+	<p>
+		<button class="btn btn-minier btn-yellow">Minier</button>
+		<button class="btn btn-xs">Mini</button>
+		<button class="btn btn-sm btn-primary">Small</button>
+		<button class="btn btn-info">Default</button>
+		<button class="btn btn-lg btn-success">Large Size</button>
+	</p>
+	
+	<p>
+		<button class="btn btn-warning btn-xlg">Larger Size</button>
+		<button class="btn btn-danger">Default</button>
+		<button class="btn btn-sm btn-inverse">Small</button>
+		<button class="btn btn-xs btn-pink">Pink</button>
+		<button class="btn btn-minier btn-purple">Purple</button>
+	</p>
+	
+	<h3 class="header smaller lighter grey">Disabled Buttons</h3>
+	<p>
+		<button class="btn disabled">Default </button>
+		<button class="btn disabled btn-primary">Primary</button>
+		<button class="btn disabled btn-info">Info</button>
+		<button class="btn disabled btn-success">Success</button>
+	</p>
+	<hr />
+	<p>
+		<button class="btn btn-danger btn-block">Block Button</button>
+	</p>
+	
+ </div><!-- /.col -->
+
+</div><!-- /.row -->
+
+</div>

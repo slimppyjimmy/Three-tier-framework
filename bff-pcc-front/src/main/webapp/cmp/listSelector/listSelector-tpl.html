@@ -1,0 +1,40 @@
+<div class = "td-form popup">
+    <div class = "btn-light btn-sm control-header" style = "width: 100%;">
+        <label class = "control-header-title">{{::param.title}}</label>
+        <input ng-if="param.filterFields" ng-change = "_toFilter()" ng-model = "_filter.text" type = "text" class = "filter-box" placeholder = "请输入过滤文本" style = "border-radius: 5px !important;"/>
+    </div>
+    <table class = "table table-striped table-bordered table-hover row-border hover" style="margin-bottom: 2px;">
+        <thead>
+        <tr>
+            <th ng-if = "param.grid.checkbox" class = "center" ng-click = "_allClick($event)">
+                <label class = "pos-rel">
+                    <input type = "checkbox" class = "ace" ng-change = "_changeOnes($event)" ng-model = "_checked.all"/>
+                    <span class = "lbl"></span>
+                </label>
+            </th>
+            <th ng-repeat = "column in param.grid.columns" class = "{{column.header.class}}"
+                style = "{{column.header.style}}">{{::column.header.name}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-if="_filter.result" ng-repeat = "row in _filter.result track by $index" ng-click = "_oneClick($index)"
+            ng-dblclick = "_dblClick(row)">
+            <td ng-if = "param.grid.checkbox" class = "center">
+                <label class = "pos-rel">
+                    <input type = 'checkbox' class = "ace" ng-change = "_changeAll()"
+                           ng-model = "_checked.rows[$index]"/>
+                    <span class = "lbl"></span>
+                </label>
+            </td>
+            <td ng-repeat = "column in param.grid.columns" class = "{{column.data.class}}" style = "{{column.data.style}}">{{row[column.data.name]}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class = "btn-light btn-sm uc-border-left" align = "center" style = "width: 100%;">
+        <button ng-click = "_ok()" style = "margin:0 10px" type = "button" class = "btn btn-success btn-xs">确定</button>
+        <button ng-click = "cancel()" style = "margin:0 10px" type = "button" class = "btn btn-success btn-xs">取消
+        </button>
+        <div class = "float-clear"></div>
+    </div>
+</div>

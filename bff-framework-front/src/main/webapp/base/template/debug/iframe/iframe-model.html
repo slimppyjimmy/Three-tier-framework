@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<label>Iframe Communication Test:</label>
+<input id="receivedInput" />
+<br/>
+<div>
+    <button id="sendParentButton" onclick="sendParentMessage()">Send Parent Message</button>
+</div>
+
+<script>
+    window.addEventListener("message",function(event){
+        if(event.origin!=="http://localhost:7676") return;
+        console.log("message received:"+event.data,event);
+        document.getElementById("receivedInput").value=event.data;
+        var message=(new Date().getTime())
+        console.log(event.source)
+        event.source.postMessage(message,event.origin);
+    },false);
+
+    window.addEventListener("message",function(event){
+        if(event.origin!=="http://localhost:7676") return;
+        console.log("message received:"+event.data,event);
+        document.getElementById("receivedInput").value=event.data;
+        var message=(new Date().getTime())
+        console.log(event.source)
+        event.source.postMessage(message,event.origin);
+    },false);
+
+    function sendParentMessage(){
+        var domain="http://"+window.location.host;
+        var iframe=window.parent;
+        var message=(new Date().getTime());
+        iframe.postMessage(message,domain)
+    }
+
+</script>
+</body>
+</html>

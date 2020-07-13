@@ -1,0 +1,43 @@
+1 说明:dist.platform 旨在搭建公用平台
+
+2 列表说明：
+    （1）dist.platform.assets;//公用font、icon、image存放目录
+    （2）dist.platform.com;//公用组件、控件存放目录
+          1）navbar;//头部导航栏
+          2）button;//按钮
+          3）prompt;//弹出对话框
+          4）sidebar;//侧边导航栏
+          5）table;//表格控件
+          6）tab; //tab选项卡
+          7）calendar;//日历控件
+          8）tree;//树形控件
+          9）tooltip;//提示工具
+          10）form;//表单验证控件组
+          11）markdown;//文本排版编辑器
+          12）toolbar;//工具条
+          13）breadcrumb;//面包屑导航
+          14）progressbar;//进度条
+          15）input;//输入框组件
+          16）select;//选择框组件
+          17）dropdown;//下拉框
+          18）scrollbar;//滚动条-回滚条、锚点
+          19) modal;//模式框
+          20）searchbar;//搜索框
+          21）dashboard;//仪表板
+          22）pagination;//分页组件
+          23）carousel;//图片左右传送控件
+          24）accordion;//手风琴列表控件（横向、纵向）
+          25）dropdownbar;//下拉导航栏
+          26）3dflip;//3d翻转控件
+          27）horizo​​ntalnav;//水平导航栏
+    （3）dist.platform.constant;//公用constant服务存放目录
+    （4）dist.platform.event;//公用事件、消息存放目录
+    （5）dist.platform.filters;//公用过滤器存放目录
+    （6）dist.platform.lib;//第三方组件存放目录
+    （7）dist.platform.server;//公用与服务器通信服务存放目录
+    （8）dist.platform.services;//公用服务存放目录
+    （9）dist.platform.storage;//公共本地存储、缓存存放目录
+    （10）dist.platform.security;//公用安全配置存放目录
+    （11）dist.platform.debug;//公用调试服务存放目录
+
+ 3 编写服务时注意错误跟踪机制 编写通用的异常处理方法

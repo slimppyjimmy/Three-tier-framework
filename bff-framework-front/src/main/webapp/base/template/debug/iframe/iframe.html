@@ -1,0 +1,9 @@
+
+
+<div ng-controller="IframeController">
+    <h2>Iframe Communication Test!</h2>
+    <button ng-click="vm.postSubIframeMessage()">Send Iframe Message</button>
+    <div>Message Form Iframe:{{vm.received}}</div>
+    <!--<button ng-click="vm.postParentIframeMessage()">Send parent iframe message</button>-->
+    <iframe style="overflow-x:scroll" name="testIframe" id="testIframe" width="100%" height="100%" src="template/debug/iframe/iframe-model.html"></iframe>
+</div>

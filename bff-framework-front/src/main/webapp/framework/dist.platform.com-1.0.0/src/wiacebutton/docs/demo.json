@@ -1,0 +1,10 @@
+{
+    "cname":"wiacebutton",
+    "discribe":"wiacebutton(按钮组)",
+    "demos":[
+        {"demoDiscribe":"Application","html":"wiacebutton/docs/demo1.html","js":"wiacebutton/docs/demo1.js"},
+		 {"demoDiscribe":"Default","html":"wiacebutton/docs/demo2.html","js":"wiacebutton/docs/demo2.js"},
+		 {"demoDiscribe":"Groups","html":"wiacebutton/docs/demo3.html","js":"wiacebutton/docs/demo3.js"},
+		 {"demoDiscribe":"Labels","html":"wiacebutton/docs/demo4.html","js":"wiacebutton/docs/demo4.js"}
+    ]
+}

@@ -1,0 +1,129 @@
+[
+	{"name":"Alabama","abbr":"AL"},
+	{"name":"Alaska","abbr":"AK"},
+	{"name":"Arizona","abbr":"AZ"},
+	{"name":"Arkansas","abbr":"AR"},
+	{"name":"California","abbr":"CA"},
+	{"name":"Colorado","abbr":"CO"},
+	{"name":"Connecticut","abbr":"CT"},
+	{"name":"Delaware","abbr":"DE"},
+	{"name":"Florida","abbr":"FL"},
+	{"name":"Georgia","abbr":"GA"},
+	{"name":"Hawaii","abbr":"HI"},
+	{"name":"Idaho","abbr":"ID"},
+	{"name":"Illinois","abbr":"IL"},
+	{"name":"Indiana","abbr":"IN"},
+	{"name":"Iowa","abbr":"IA"},
+	{"name":"Kansas","abbr":"KS"},
+	{"name":"Kentucky","abbr":"KY"},
+	{"name":"Louisiana","abbr":"LA"},
+	{"name":"Maine","abbr":"ME"},
+	{"name":"Maryland","abbr":"MD"},
+	{"name":"Massachusetts","abbr":"MA"},
+	{"name":"Michigan","abbr":"MI"},
+	{"name":"Minnesota","abbr":"MN"},
+	{"name":"Mississippi","abbr":"MS"},
+	{"name":"Missouri","abbr":"MO"},
+	{"name":"Montana","abbr":"MT"},
+	{"name":"Nebraska","abbr":"NE"},
+	{"name":"Nevada","abbr":"NV"},
+	{"name":"New Hampshire","abbr":"NH"},
+	{"name":"New Jersey","abbr":"NJ"},
+	{"name":"New Mexico","abbr":"NM"},
+	{"name":"New York","abbr":"NY"},
+	{"name":"North Carolina","abbr":"NC"},
+	{"name":"North Dakota","abbr":"ND"},
+	{"name":"Ohio","abbr":"OH"},
+	{"name":"Oklahoma","abbr":"OK"},
+	{"name":"Oregon","abbr":"OR"},
+	{"name":"Pennsylvania","abbr":"PA"},
+	{"name":"Rhode Island","abbr":"RI"},
+	{"name":"South Carolina","abbr":"SC"},
+	{"name":"South Dakota","abbr":"SD"},
+	{"name":"Tennessee","abbr":"TN"},
+	{"name":"Texas","abbr":"TX"},
+	{"name":"Utah","abbr":"UT"},
+	{"name":"Vermont","abbr":"VT"},
+	{"name":"Virginia","abbr":"VA"},
+	{"name":"Washington","abbr":"WA"},
+	{"name":"West Virginia","abbr":"WV"},
+	{"name":"Wisconsin","abbr":"WI"},
+	{"name":"Wyoming","abbr":"WY"}
+]
+
+{
+	"abstract": true,
+	"title": "代码测试",
+	"icon": "fa fa-tachometer",
+	"template": "<ui-view/>",
+	"name": "debug",
+	"level-1": true,
+	"submenu": [
+		{
+			"title": "服务通信",
+			"name": "debug.factory",
+			"templateUrl":"template/debug/factoryCommunication/factory-communication.html",
+			"params":"",
+			"level-2": true
+		},
+		{
+			"title": "IFRAME",
+			"name": "debug.iframe",
+			"templateUrl":"template/debug/iframe/iframe.html",
+			"params":"",
+			"level-2": true
+		},
+		{
+			"abstract": true,
+			"title": "TABLE",
+			"icon": "",
+			"template": "<ui-view/>",
+			"name": "debug.table",
+			"level-2": true,
+			"submenu": [
+				{
+					"title": "Smart",
+					"name": "debug.table.smart",
+					"templateUrl":"template/debug/table/smartTable/smart-table.html",
+					"params":"",
+					"level-3": true
+				},
+				{
+					"title": "UiGridDemo1",
+					"name": "debug.table.uiGridDemo1",
+					"templateUrl":"template/debug/table/uiGrid/ui-grid-demo1.html",
+					"params":"",
+					"level-3": true
+				},
+				{
+					"title": "UiGridDemo2",
+					"name": "debug.table.uiGridDemo2",
+					"templateUrl":"template/debug/table/uiGrid/ui-grid-demo2.html",
+					"params":"",
+					"level-3": true
+				}
+			]
+		},
+		{
+			"title": "Pagination",
+			"name": "debug.pagination",
+			"templateUrl":"template/debug/pagination/pagination.html",
+			"params":"",
+			"level-2": true
+		},
+		{
+			"title": "Chart",
+			"name": "debug.chart",
+			"templateUrl":"template/debug/chart/chart.html",
+			"params":"",
+			"level-2": true
+		},
+		{
+			"title": "开发规范",
+			"name": "debug.developNorm",
+			"templateUrl":"template/debug/developNorm/develop-norm.html",
+			"params":"",
+			"level-2": true
+		}
+	]
+}

@@ -1,0 +1,19 @@
+<div>
+    <div class="form-group-md">
+        <button class="btn btn-light btn-sm" style="width: 100%; ">温示</button>
+    </div>
+    <div class="helpTips">
+        <div ng-if="preparedata.content && preparedata.content!==''">
+            {{preparedata.content}}
+        </div>
+        <iframe ng-if="preparedata.templateUrl && preparedata.templateUrl!=='' "
+                src="{{ preparedata.templateUrl}}" frameborder="0"
+                scrolling="auto"
+                width="100%"
+        ></iframe>
+    </div>
+    <div class="btn-light btn-sm uc-border-left" align="center" style="width: 100%;">
+        <button ng-if="!param.onlyExite&&!param.hasSonModal" ng-click="ok()" style="margin:0 10px" type="button" class="btn btn-success btn-xs">关闭</button>
+        <div class="float-clear"></div>
+    </div>
+</div>

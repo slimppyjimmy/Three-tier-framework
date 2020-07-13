@@ -1,0 +1,5 @@
+<div ng-show="vm.showWidget"  class="{{vm.model.barClass}}" ng-style="{position:'fixed',top:vm.top+'px',left:vm.left+'px'}" >
+    <span ng-repeat="menu in vm.model.menus">
+        <button title="{{menu.name}}" class="arrow fa {{menu.icon}}" ng-click="vm.onmenuclick(menu)"></button>
+    </span>
+</div>

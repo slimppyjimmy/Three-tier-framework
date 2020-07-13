@@ -1,0 +1,109 @@
+<div
+        config='
+    {
+          "messages": [
+                {
+                    "type": "forward"
+                    , "id": "29803ee0-2b02-458b-bc61-d559738f4d50"
+                    , "source": "list"
+                    , "sourceMessageName": "nodeChanged"
+                    , "targets": [
+                        {
+                              "target": "select"
+                            , "targetMessageName": "parentChange"
+                        }
+                    ]
+                }
+                ,{
+                    "type": "forward"
+                    , "id": "d903a2b9-ff1c-4a27-ae16-20b955ae68df"
+                    , "source": "select"
+                    , "sourceMessageName": "nodeChanged"
+                    , "targets": [
+                        {
+                              "target": "tree"
+                            , "targetMessageName": "parentChange"
+                        }
+                    ]
+                }
+                ,{
+                    "type": "forward"
+                    , "id": "605438e1-f407-4857-adc5-0b690d818ee8"
+                    , "source": "tree"
+                    , "sourceMessageName": "nodeModified"
+                    , "targets": [
+                        {
+                              "target": "list"
+                            , "targetMessageName": "dataModified"
+                        }
+                    ]
+                }
+        ]
+    }
+    '
+>
+    <div class=" {{::param3.class ? param3.class : 'col-md-6'}}"
+         list-mnt
+         config='{
+              "id": "list"
+            , "messages": [
+                {
+                      "type": "out"
+                    , "name": "nodeChanged"
+                    , "id": "29803ee0-2b02-458b-bc61-d559738f4d50"
+                }
+                ,{
+                      "type": "in"
+                    , "name": "dataModified"
+                    , "id": "605438e1-f407-4857-adc5-0b690d818ee8"
+                    , "handler": "_handleMessage_dataModified"
+                }
+            ]
+         }'
+         param="param1">
+    </div>
+    <div class=" {{::param3.class ? param3.class : 'col-md-6'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                      "id": "select"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "29803ee0-2b02-458b-bc61-d559738f4d50"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "d903a2b9-ff1c-4a27-ae16-20b955ae68df"
+                        }
+                    ]
+                 }'
+                 param="param2"
+            >
+            </div>
+            <div tree-mnt class=""
+                 config='{
+                      "id": "tree"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "d903a2b9-ff1c-4a27-ae16-20b955ae68df"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        ,{
+                              "type": "out"
+                            , "name": "nodeModified"
+                            , "id": "605438e1-f407-4857-adc5-0b690d818ee8"
+                        }
+                    ]
+                 }'
+                 param="param3"
+            >
+            </div>
+        </div>
+    </div>
+</div>

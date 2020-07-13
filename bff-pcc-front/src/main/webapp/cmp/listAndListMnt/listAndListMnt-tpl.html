@@ -1,0 +1,51 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "aec4b8b4-9ccc-11e6-8b3d-a6df6c7f39a0"
+                , "source": "parent"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "children"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="{{::param1.class ? param1.class : 'col-md-3'}}"
+         list-mnt
+         config='
+        {
+              "messages": [
+                {
+                      "type": "out"
+                    , "name": "nodeChanged"
+                    , "id": "aec4b8b4-9ccc-11e6-8b3d-a6df6c7f39a0"
+                }
+            ]
+        }'
+         param="param1"
+    >
+    </div>
+    <div class="{{::param2.class ? param2.class : 'col-md-9'}}">
+        <div list-mnt
+             config='{
+                  "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "aec4b8b4-9ccc-11e6-8b3d-a6df6c7f39a0"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param2">
+        </div>
+    </div>
+</div>

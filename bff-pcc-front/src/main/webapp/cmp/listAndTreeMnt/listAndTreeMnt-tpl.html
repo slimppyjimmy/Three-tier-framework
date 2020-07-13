@@ -1,0 +1,51 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "19ad31c5-32e6-470d-a6b7-8f1d27e994d3"
+                , "source": "tree"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div list-mnt
+         class="{{::param1.class ? param1.class : 'col-md-3'}}"
+         config='{
+          "id": "list"
+        , "messages": [
+            {
+                  "type": "out"
+                , "name": "nodeChanged"
+                , "id": "19ad31c5-32e6-470d-a6b7-8f1d27e994d3"
+            }
+        ]
+     }'
+         param="param1">
+    </div>
+    <div tree-mnt
+         class="{{::param2.class ? param2.class : 'col-md-9'}}"
+         config='{
+              "id": "tree"
+            , "messages": [
+                {
+                      "type": "in"
+                    , "name": "parentChanged"
+                    , "id": "19ad31c5-32e6-470d-a6b7-8f1d27e994d3"
+                    , "handler": "_handelMessage_parentChanged"
+                }
+            ]
+         }'
+         param="param2"
+    >
+    </div>
+</div>

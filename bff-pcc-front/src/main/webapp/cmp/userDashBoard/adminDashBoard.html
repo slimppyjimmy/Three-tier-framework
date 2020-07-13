@@ -1,0 +1,113 @@
+<div ng-controller="adminDashBoard"
+>
+    <div class="row userBashBoard" >
+        <div class="col-md-6" style="margin-top: 10px;" >
+            <div class="col-md-12" style="display: flex;flex-direction:row;justify-content: space-around">
+                <div class="card col-md-4 bashTip" style="display: flex;padding-right: 10px" >
+                    <div style="height: 80px;width: 140px;display: block;text-align: center">
+                        <span class="bashboard" style="color: rgb(56,191,186) !important;">&#xe625;</span>
+                    </div>
+                    <div class="cardContent" style="height: 80px;width: 120px;">
+                        <div class="bashTitle">用户数量</div>
+                        <p class="bashnumber">{{::_customerNumber}}</p>
+                    </div>
+                </div>
+                <div class="card col-md-4 bashTip" style="display: flex;padding-left: 5px;padding-right: 5px" >
+                    <div style="height: 80px;width: 140px;display: block;text-align: center">
+                        <span class="bashboard" style="color: rgb(45,143,245) !important;">&#xe639;</span>
+                    </div>
+                    <div class="cardContent" style="height: 80px;width: 120px;">
+                        <div class="bashTitle" style="">项目数量</div>
+                        <p class="bashnumber">90</p>
+                    </div>
+                </div>
+                <div class="card col-md-4 bashTip" style="display: flex;padding-left: 10px" >
+                    <div style="height: 80px;width: 140px;display: block;text-align: center">
+                        <span class="bashboard" style="color: rgb(238,55,90) !important;">&#xe625;</span>
+                    </div>
+                    <div class="cardContent" style="height: 80px;width: 120px;">
+                        <div class="bashTitle">即将过期</div>
+                        <p class="bashnumber">{{::_expirelic}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h3 class="ChartTitle1">
+                    本月客户统计
+                </h3>
+                <canvas id="myCustomer" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <div list-mnt
+             class="col-md-6"
+             config='{}'
+             param='
+        {
+            "title": "待审核"
+            , "listUrl": ":licManager/licRequest/auditPage"
+            , "idfield": "guid"
+            , "pagination": {
+                    "pageSize": 10
+                    , "class": ""
+             }
+            , "buttons": [
+            ]
+            , "grid": {
+                "style": "",
+                "buttons":[
+                    {
+                        "type": "modify",
+                        "name": "审核",
+                        "isPermitted":"true",
+                        "approval":"true",
+                        "icon": "",
+                        "style": "",
+                        "loadUrl": ":licManager/licRequest/auditPrepare?appInstanceGuid=:guid"
+                        , "prepareUrl": ""
+                        , "executeUrl": ":licManager/licRequest/audit"
+                         ,"title": "审核许可证",
+                        "templateUrl": "buz/licenseApprovalMnt/approvalLic.html"
+                    }
+                ],
+                "columns": [
+                     {
+                        "style": "width:20%;",
+                        "header": {
+                            "name": "申请人",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "applyName",
+                            "style": "text-align:center"
+                        }
+                    }
+                    , {
+                        "style": "width:20%;",
+                        "header": {
+                            "name": "项目名称",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "projectName",
+                            "style": "text-align:center"
+                        }
+                    },
+                    {
+                        "style": "width:20%;",
+                        "header": {
+                            "name": "许可证过期时间",
+                            "style": "text-align:center"
+                        },
+                        "data": {
+                            "name": "expireDate",
+                            "style": "text-align:center"
+                        }
+                    }
+                ]
+            }
+
+        }
+'>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+
+
+<div class="btn-group wi-tab-width-100" ng-init="" >
+    <div style="background:#FFF!important">
+        <div class=" x-scroll-enable" ng-class="{'wi-tab-bar-showicon':!vm.tabStatus.showRightTabButton}">
+               <div ng-show="vm.tabStatus.showLeftTabButton" class="wi-tab-bar-lefticon" >
+                   <button ng-click="vm.scroll('up')" class="btn btn-white btn-default wi-tab-bar-bordernone"
+                           ng-class="{'disabled':vm.tabStatus.disableLeftTabButton}"></button>
+               </div>
+                <div ng-show="vm.tabStatus.showRightTabButton" class="wi-tab-bar-righticon wi-tab-padding-0">
+
+                    <button  ng-click="vm.scroll('down')" class="btn btn-white btn-default wi-tab-bar-bordernone"
+                             ng-class="{ 'disabled':vm.tabStatus.disableRightTabButton}"></button>
+
+                </div>
+                <div id="{{tabId}}" class="wi-tab-bar-content "
+                     ng-class="{'wi-tab-scrollshow':!vm.tabStatus.showLeftTabButton}" ng-init="activeItem={};">
+                               <span ng-repeat="item in currentTab track by $index">
+                                   <span ng-if="options.enableRouter==true" class="wi-tab-bar-close">
+                                           <a ng-if="true"  ng-click="vm.customHref(item);"  class="wi-tab-alabel">  <!-- ui-sref="{{item.name}}" ui-sref-opts="{reload: true}" ui-sref-active="active"-->
+                                            <button type="button"
+                                                  class="btn btn-white wi-tab-bar-bordernone " ng-click="callbacks.selectTabItem(item)"
+                                                  ng-class="{'{{item.style}}':true,' wi-tab-bar-active':activeItem.name==item.name&&(activeItem.templateUrl==item.templateUrl)}"
+                                                  style="">{{item.title}}</button>
+                                           </a>
+                                       <i class="fa fa-close " ng-click="vm.removeTabItem(item)"></i>
+                                    </span>
+                                   <span ng-if="!options.enableRouter==true" class="wi-tab-bar-close">
+                                        <a  href="javascript:void(0);" class="wi-tab-alabel">
+                                            <button type="button"
+                                                    class="btn btn-white wi-tab-bar-bordernone" ng-click="vm.setActiveItem(item,$index);callbacks.selectTabItem(item)"
+                                                    ng-class="{'{{item.style}}':true,' wi-tab-bar-active':activeItem.name==item.name&&activeItem.templateUrl==item.templateUrl}"
+                                                    style="">{{item.title}}</button>
+                                        </a>
+                                        <i class="fa fa-close " ng-click="vm.removeTabItem(item)"></i>
+                                   </span>
+
+                               </span>
+                </div>
+                <div class="wi-tab-bar-floatclear"></div>
+        </div>
+    </div>
+</div>

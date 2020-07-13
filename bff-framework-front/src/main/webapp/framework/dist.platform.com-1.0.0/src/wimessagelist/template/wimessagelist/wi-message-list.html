@@ -1,0 +1,43 @@
+<div>
+	<div widget-box  class="widget-box transparent" wb-reloading='isActivityReloading'  on-reload='activityReload()'>
+			<div class="widget-header widget-header-small">
+				<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-rss orange"></i> {{activityConfig.title}}</h4>
+				<div class="widget-toolbar action-buttons">
+					<a href="" data-action="reload"><i class="ace-icon fa fa-refresh blue"></i></a>&nbsp;
+					<a href="" class="pink"><i class="ace-icon fa fa-trash-o"></i></a>
+				</div>
+			</div>
+
+		<div class="widget-body">
+         <div class="widget-main padding-8">
+            <!-- #section:pages/profile.feed -->
+            <div ace-scroll options="activityScroll">
+             <div ng-repeat="activity in activityData" class="profile-feed">
+                <div ng-repeat="item in activity" class="profile-activity clearfix">
+                    <div>
+                        <img ng-if="item.avatar" class="pull-left" alt="{{item.name}}'s avatar" ng-src="{{item.avatar}}" />
+                        <i ng-if="item.icon" class="pull-left thumbicon {{item.icon}} no-hover"></i>
+                        <a class="user" href="" ng-bind="item.name"></a>
+                        <span ng-bind-html="item.action"></span>
+                        <div class="time"><i class="ace-icon fa fa-clock-o bigger-110"></i> <span ng-bind="item.time"></span></div>
+                    </div>
+                    <div class="tools action-buttons">
+                        <a href="" class="blue"><i class="ace-icon fa fa-pencil bigger-125"></i></a>
+                        <a href="" class="red"><i class="ace-icon fa fa-times bigger-125"></i></a>
+                    </div>
+                </div>
+             </div>
+            </div>
+            <!-- /section:pages/profile.feed -->
+         </div>
+        </div>
+
+		<div class="center">
+			<button type="button" class="btn btn-sm btn-primary btn-white btn-round">
+				<i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+				<span class="bigger-110">{{activityConfig.linkName}}</span>
+				<i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+			</button>
+		</div>
+	</div>
+</div>

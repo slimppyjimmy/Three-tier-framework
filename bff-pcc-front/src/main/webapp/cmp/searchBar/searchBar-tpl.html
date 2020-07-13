@@ -1,0 +1,53 @@
+<div ng-if="_searchBar"  ng-show="_searchBar" class="search-bar"
+     ng-class="{overlaynohidden:_searchBar._dateBox!==undefined}"
+     ng-keypress="_searchBarKeyPressed($event)">
+    <div class="search-bar-condition">
+                <span ng-repeat="property in _searchBar.properties">
+                    <span class="{{::property.labelClass}}">
+                        <label>{{::property.label}}</label>
+                    </span>
+                    <span class="{{::property.class}}" ng-switch on="property.type"
+                          ng-init="_searchBar.data[property.name]=_searchBar.data[property.name]==undefined?property.defaultValue:_searchBar.data[property.name]">
+                        <input ng-switch-when="input" ng-model="_searchBar.data[property.name]" type="text"
+                               placeholder="{{::property.placeholder}}"/>
+                        <span ng-switch-when="radio"
+                              ng-init="_searchBar.data[property.name]=_searchBar.data[property.name]==undefined?property.defaultValue:_searchBar.data[property.name].toString()">
+                            <label class="radio-inline">
+                                <input type="radio" name="{{::property.name}}"
+                                       ng-model="_searchBar.data[property.name]"
+                                       value="true"/>是
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="{{::property.name}}"
+                                       ng-model="_searchBar.data[property.name]"
+                                       value="false"/>否
+                            </label>
+                        </span>
+                        <select ng-switch-when="list" ng-model="_searchBar.data[property.name]"
+                                ng-options="option[property.dataMap.idfield] as option[property.dataMap.textfield] for option in _searchBar.preparedata[property.data]"
+                                ng-init="_searchBar.data[property.name]=property.defaultValue === undefined || property.defaultValue < 0 || property.defaultValue > _searchBar.preparedata[property.data].length ? 0 : property.defaultValue">
+                            <option ng-if="property.placeholder!=null" value="">{{::property.placeholder}}</option>
+                        </select>
+                        <div ng-switch-when="tree" tree-input
+                             label="{{::property.label}}"
+                             placeholder="{{::property.placeholder}}"
+                             data="_searchBar.preparedata[property.data]"
+                             idfield="{{::property.dataMap.idfield}}"
+                             pidfield="{{::property.dataMap.pidfield}}"
+                             textfield="{{::property.dataMap.textfield}}"
+                             returnfield="{{::property.dataMap.idfield}}"
+                             returnvalue="_searchBar.data[property.name]"
+                        ></div>
+                        <span ng-switch-when="date" ng-model="_searchBar.data[property.name]" datepicker selector="{{::property.name}}" param="{blank:false}">
+                        </span>
+                    </span>
+                </span>
+    </div>
+    <div class="search-bar-button" ng-if="_searchBar._dateBox && _searchBar._dateBox.url" ng-show="_searchBar._dateBox">
+        <button class="btn btn-success btn-xs" ng-click="_download() ">下载</button>
+    </div>
+    <div class="search-bar-button" ng-if="_searchBar.removeSearch == undefined || _searchBar.removeSearch == null">
+        <button class="btn btn-success btn-xs" ng-click="_search()" id="searchBtn">搜索</button>
+    </div>
+
+</div>

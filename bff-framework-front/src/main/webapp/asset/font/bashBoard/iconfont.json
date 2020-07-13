@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "813691",
+      "name": "客户",
+      "font_class": "kehu",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "2053184",
+      "name": "过期提醒",
+      "font_class": "guoqitixing",
+      "unicode": "e6e6",
+      "unicode_decimal": 59110
+    },
+    {
+      "icon_id": "11121472",
+      "name": "项目",
+      "font_class": "xiangmu",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<div>
+    <div ng-if = "_showWidget" ng-init = "vm.selectIndex=-1" class = "btn-light btn-sm control-header">
+        <label class = "control-header-title">{{::param.title}}</label>
+        <!--<select class = "control-header-select" ng-model = "_selected" value="_selected[param.dataMap.idfield]" ng-change = "_onNodeFocusChanged(_selected)"-->
+        <!--ng-options = "_selected[param.dataMap.textfield] for _selected in _listdata">-->
+        <!--<option ng-if = "!_autoSelectFirstRow" value = ""> &#45;&#45; {{::param.placeholder}} &#45;&#45; </option>-->
+        <!--</select>-->
+        <!--<select choosenId="{{selectctrlid}}" class = "control-header-select" ng-model="selectedId" ng-change="_onNodeFocusChanged(selectedId)">-->
+        <!--<option ng-repeat="item in _listdata" value="{{item[param.dataMap.idfield]}}">{{item[param.dataMap.textfield]}}</option>-->
+        <!--</select>-->
+        <select choosenId="{{selectctrlid}}" class = "control-header-select" >
+        </select>
+        <span ng-if = "param.refreshable === undefined ||param.refreshable" style = "float: right;margin-top:4px;margin-right:4px;">
+            <button class = "btn btn-success btn-xs" ng-click="_list($event)" >刷新</button>
+        </span>
+    </div>
+</div>

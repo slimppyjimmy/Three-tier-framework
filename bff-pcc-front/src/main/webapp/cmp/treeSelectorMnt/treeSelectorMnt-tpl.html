@@ -1,0 +1,71 @@
+<div class = "td-form popup">
+    <div class = "btn-light btn-sm control-header" style = "width: 100%;">
+        <label class = "control-header-title">{{::param.title}}</label>
+        <input ng-if="param.filterFields" ng-change = "_toFilter()" ng-model = "_filter.text" type = "text" class = "filter-box" placeholder = "请输入过滤文本" style = "border-radius: 5px !important;"/>
+    </div>
+    <div ng-if = "_searchBar.properties" ng-show = "_showSearchBar" class = "search-bar clear-float" ng-keypress="_searchBarKeyPressed($event)">
+        <span ng-repeat = "property in _searchBar.properties">
+            <span class = "{{::property.labelClass}}">
+                <label>{{::property.label}}</label>
+            </span>
+            <span class = "{{::property.class}}" ng-switch on = "property.type"
+                  ng-init = "_searchBar.data[property.name]=_searchBar.data[property.name]==undefined?property.defaultValue:_searchBar.data[property.name]">
+                <input ng-switch-when = "input" ng-model = "_searchBar.data[property.name]" type = "text"
+                       placeholder = "{{::property.placeholder}}"/>
+                <span ng-switch-when = "radio"
+                      ng-init = "_searchBar.data[property.name]=_searchBar.data[property.name]==undefined?property.defaultValue:_searchBar.data[property.name].toString()">
+                    <label class = "radio-inline">
+                        <input type = "radio" name = "{{::property.name}}"
+                               ng-model = "_searchBar.data[property.name]"
+                               value = "true"/>是
+                    </label>
+                    <label class = "radio-inline">
+                        <input type = "radio" name = "{{::property.name}}"
+                               ng-model = "_searchBar.data[property.name]"
+                               value = "false"/>否
+                    </label>
+                </span>
+                <select ng-switch-when = "list" ng-model = "_searchBar.data[property.name]" ng-options = "option[property.dataMap.idfield] as option[property.dataMap.textfield] for option in _searchBar.preparedata[property.data]">
+                    <option value = "">{{::property.placeholder}}</option>
+                </select>
+                <div ng-switch-when = "tree" tree-input
+                     label = "{{::property.label}}"
+                     placeholder = "{{::property.placeholder}}"
+                     data = "_searchBar.preparedata[property.data]"
+                     idfield = "{{::property.dataMap.idfield}}"
+                     pidfield = "{{::property.dataMap.pidfield}}"
+                     textfield = "{{::property.dataMap.textfield}}"
+                     returnfield = "{{::property.dataMap.idfield}}"
+                     returnvalue = "_searchBar.data[property.name]"
+                ></div>
+            </span>
+        </span>
+        <span style = "float: right">
+            <button class = "btn btn-success btn-xs" ng-click = "_search()">搜索</button>
+        </span>
+    </div>
+    <div class="fullHeight scroll clear-float">
+        <wi-tree dataProvider="_filter.result"
+                 idfield="{{::param.idfield}}"
+                 pidfield="{{::param.pidfield}}"
+                 labelfield="{{::param.textfield}}"
+                 multiselect="{{::_multiselect}}"
+                 listtype="_listtype"
+                 disabled="param.disabled"
+                 precondition="param.precondition"
+                 settingicoprecondition="param.settingicoprecondition"
+                 onItemClick="_onNodeClicked"
+                 onselect="_onNodeChecked"
+                 oncancelselect="_onNodeUnchecked"
+                 wid="_treeModel"
+                 onloadbranch="_onloadbranch"
+        >
+        </wi-tree>
+    </div>
+    <div class = "btn-light btn-sm uc-border-left" align = "center" style = "width: 100%;">
+        <button ng-click = "_ok()" style = "margin:0 10px" type = "button" class = "btn btn-success btn-xs">确定</button>
+        <button ng-click = "cancel()" style = "margin:0 10px" type = "button" class = "btn btn-success btn-xs">取消
+        </button>
+        <div class = "float-clear"></div>
+    </div>
+</div>

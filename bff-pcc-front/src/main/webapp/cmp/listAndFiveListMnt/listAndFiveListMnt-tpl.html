@@ -1,0 +1,137 @@
+<div
+        config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                , "source": "tree"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "child-list1"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "child-list2"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "child-list3"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "child-list4"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "child-list5"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+        expand-class = 'p75Height'
+        collapse-class = 'headerOnlyHeight'
+>
+    <div class="{{::param1.class ? param1.class : param2.class ? param2.class : 'col-md-3'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div list-mnt
+                 config='
+                {
+                      "id": "list"
+                      , "messages": [
+                        {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                        }
+                    ]
+                }'
+                 param="param1"
+            >
+            </div>
+        </div>
+    </div>
+
+    <div class="{{::param3.class ? param3.class : param4.class ? param4.class : param5.class ? param5.class : param6.class ? param6.class : param7.class ? param7.class :'col-md-9'}}  gap-vertical" >
+        <div list-mnt ng-class="_collapseableControls[0]._heightClass" class="gap-vertical"
+             config='{
+              "id": "child-list1"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="_collapseableControls[0]"
+             switch-collapse = "_switchCollapse"
+        >
+        </div>
+        <div list-mnt ng-class="_collapseableControls[1]._heightClass" class="gap-vertical"
+             config='{
+                  "id": "child-list2"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="_collapseableControls[1]"
+             switch-collapse = "_switchCollapse">
+        </div>
+        <div list-mnt ng-class="_collapseableControls[2]._heightClass" class="gap-vertical"
+             config='{
+                  "id": "child-list3"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="_collapseableControls[2]"
+             switch-collapse = "_switchCollapse">
+        </div>
+        <div list-mnt ng-class="_collapseableControls[3]._heightClass" class="gap-vertical"
+             config='{
+                  "id": "child-list4"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="_collapseableControls[3]"
+             switch-collapse = "_switchCollapse">
+        </div>
+        <div list-mnt ng-class="_collapseableControls[4]._heightClass" class="gap-vertical"
+             config='{
+                  "id": "child-list5"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "56aeed8c-e476-48c0-b936-5d2c479ecf28"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="_collapseableControls[4]"
+             switch-collapse = "_switchCollapse">
+        </div>
+    </div>
+</div>

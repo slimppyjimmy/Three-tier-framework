@@ -1,0 +1,43 @@
+<!--父级-->
+<div ng-controller="ParentController">
+    <h>1 ParentController--直接注册服务监听得到：{{data}}</h>
+    <!--第一级-->
+    <div ng-controller="FirstOneController">
+        <h>&nbsp&nbsp1.1 FirstOneController--直接将服务绑定到scope得到：{{data}}</h>
+        <!--第二级-->
+        <div ng-controller="SecondOneController">
+            <h>&nbsp&nbsp&nbsp&nbsp1.1.1 SecondOneController--直接调用服务的getValue方法得到：{{data}}</h>
+            <!--第三极-->
+            <div ng-controller="ThirdOneController">
+                <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1.1.1.1 ThirdOneController--{{data1}}</h>
+                <input ng-model="vm.inputValue"/>
+                <button ng-click="vm.setInputValue()">Set Value</button>
+
+            </div>
+
+        </div>
+        <!--第二级-->
+        <div ng-controller="SecondTwoController">
+            <h>&nbsp&nbsp&nbsp&nbsp1.1.2 SecondTwoController--通过注册广播监听得到：{{data}}</h>
+
+        </div>
+
+    </div>
+
+    <!--第一级-->
+    <div ng-controller="FirstTwoController">
+        <h>&nbsp&nbsp1.2 FirstTwoController--通过注册广播监听得到：{{data}}</h>
+        <!--第二级-->
+        <div ng-controller="SecondThreeController">
+            <h>&nbsp&nbsp&nbsp&nbsp1.2.1 SecondThreeController--直接将服务绑定到scope得到：{{data3}}</h>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+</div>

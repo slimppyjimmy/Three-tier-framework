@@ -1,0 +1,121 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "817b4429-63c9-4050-9901-1ea96b65dc5d"
+                , "source": "select1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree1"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "e40bda33-add6-4986-9512-fbb2bbf809be"
+                , "source": "tree1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "select2"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                , "source": "select2"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree2"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class=" {{::param1.class ? param1.class : param2.class ? param2.class : 'col-md-3'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                      "id": "select1"
+                    , "messages": [
+                        {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "817b4429-63c9-4050-9901-1ea96b65dc5d"
+                        }
+                    ]
+                 }'
+                 param="param1"
+            >
+            </div>
+            <div tree-mnt class=""
+                 config='{
+                      "id": "tree1"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "817b4429-63c9-4050-9901-1ea96b65dc5d"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "e40bda33-add6-4986-9512-fbb2bbf809be"
+                        }
+                    ]
+                 }'
+                 param="param2"
+            >
+            </div>
+        </div>
+    </div>
+    <div class="{{::param3.class ? param3.class : param4.class ? param4.class : 'col-md-9'}}">
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding=""
+                 config='{
+                      "id": "select2"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "e40bda33-add6-4986-9512-fbb2bbf809be"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                        }
+                    ]
+                 }'
+                 param="param3"
+            >
+            </div>
+            <div tree-mnt class=""
+                 config='{
+                      "id": "tree2"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                    ]
+                 }'
+                 param="param4">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+
+<style>
+.grid{
+    width:100%;
+}
+
+</style>
+
+<div ng-controller="HomeController" class="container-fluid">
+    <div  class="row">
+        <div class="col-md-12 padding-0">
+            <div class="col-md-9 padding-0">
+                <h5 class="dist-h5">快捷导航</h5>
+                <wi-nav-button></wi-nav-button>
+                <h5 class="dist-h5">代表项目</h5>
+                <div ui-grid="gridOptions" class="grid" ui-grid-resize-columns
+                     ui-grid-move-columns ui-grid-auto-resize ng-style="getTableHeight()"
+                     ui-grid-selection></div>
+                <h5 class="dist-h5">收发统计</h5>
+                <div class="row">
+                    <div class="col-md-12 padding-right-0">
+                        <div class="col-md-7 padding-0">
+<!--                            <fusioncharts
+                                    width="100%"
+                                    type="column2d"
+                                    datasource="{{myDataSource}}">
+                            </fusioncharts>-->
+                            <canvas id="bar" class="chart chart-bar"
+                                    chart-data="data" chart-labels="labels"  chart-legend="true"chart-series="series"
+                                    chart-options="options">
+                            </canvas>
+                        </div>
+                        <div class="col-md-5 padding-0">
+<!--                            <fusioncharts
+                                    width="100%"
+                                    type="pie3d"
+                                    datasource="{{myDataSource1}}"
+                            ></fusioncharts>-->
+                            <canvas id="pie" class="chart chart-pie"
+                                    chart-data="data2" chart-labels="labels2" chart-options="options">
+                            </canvas>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 padding-0 dt-home-rightarea-padding">
+
+                <h5 class="dist-h5">局内公告</h5>
+                <wi-message-list activity-data='activityData' activity-scroll='activityScroll'
+                                 is-activity-reloading='isActivityReloading' activity-reload='activityReload()'
+                                 activity-config='activityConfig'></wi-message-list>
+
+                <h5 class="dist-h5">图片新闻</h5>
+                <div style="height:200px;">
+                     <wi-carousel interval="myInterval">
+                    <wi-slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="margin:auto;height:100%;width:100%;">
+                        <div class="carousel-caption">
+                            <h4>Slide {{$index}}</h4>
+                            <a href="javascript:void(0);">{{slide.text}}</a>
+                        </div>
+                    </wi-slide>
+                </wi-carousel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

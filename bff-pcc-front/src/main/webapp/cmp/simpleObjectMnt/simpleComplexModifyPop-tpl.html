@@ -1,0 +1,126 @@
+<div>
+    <div class="form-group form-group-md">
+        <button class="btn btn-light btn-sm" style="width: 100%; ">{{param.title}}</button>
+    </div>
+    <form class="form-horizontal">
+        <div class="container-fluid">
+            <div class="form-group form-group-sm" ng-repeat="property in param.properties" ng-hide="precondition(property,property.precondition)">
+                <label style="padding-right:0;" ng-hide="property.hide " class="col-sm-2 control-label">{{property.label}}</label>
+                <span ng-hide="property.hide" class="col-sm-1" style="color:red;width:1%;padding:0;line-height: 36px;"><sapn ng-if="property.nullable===false">*</sapn></span>
+                <div ng-hide="property.hide" class="col-sm-9" ng-switch on="property.type"
+                     ng-init="newdata[property.name]=newdata[property.name]==undefined?property.defaultValue:newdata[property.name]">
+                    <input ng-switch-when="input" ng-readonly="property.readonly"
+                           ng-model="newdata[property.name]" type="text"
+                           class="form-control"
+                           placeholder="{{::property.placeholder}}"
+                           maxlength="{{::property.maxlength}}"
+                           ng-keydown="forbidcode()(property.name)"
+                           ng-change="( property.required ? property.validateregx : property.validateregx && newdata[property.name].length>0 ) && validateregx()(property.name, property.validateregx, newdata[property.name])"/>
+                    <input ng-switch-when="password" ng-readonly="property.readonly"
+                           ng-model="newdata[property.name]" type="password"
+                           class="form-control"
+                           placeholder="{{::property.placeholder}}"
+                           maxlength="{{::property.maxlength}}"
+                           ng-keydown="forbidcode()(property.name)"
+                           ng-change="( property.required ? property.validateregx : property.validateregx && newdata[property.name].length>0 ) && validateregx()(property.name, property.validateregx, newdata[property.name])"/>
+                    <div ng-switch-when="radio" ng-init="newdata[property.name]=newdata[property.name]==undefined?property.defaultValue:newdata[property.name].toString()">
+                        <label class="radio-inline">
+                            <input type="radio" name="{{::property.name}}" ng-model="newdata[property.name]"
+                                   value="true" /> <span ng-if="property.radioValue==undefined ">是</span><span ng-if="property.radioValue!==undefined "ng-bind="property.radioValue[0]"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="{{::property.name}}" ng-model="newdata[property.name]"
+                                   value="false" /> <span ng-if="property.radioValue==undefined ">否</span><span ng-if="property.radioValue!==undefined " ng-bind="property.radioValue[1]">否</span>
+                        </label>
+                    </div>
+                    <div ng-switch-when="textarea" >
+                        <textarea  ng-model="newdata[property.name]" type="text" ng-readonly="property.readonly"
+                                  class="form-control" placeholder="{{::property.placeholder}}"
+                                  rows=" {{property.long}}||3"
+                                   id="{{property.textareaId}}"
+                        >
+                    </textarea>
+                        <span  class="btn btn-success btn-xs copyPosition" ng-click="fastCopy(property.textareaId)">复制</span>
+                    </div>
+
+                    <select ng-switch-when = "list" ng-disabled="property.readonly"
+                            ng-model = "newdata[property.name]" class = "form-control"
+                            ng-options = "option[property.dataMap.idfield] as option[property.dataMap.textfield] for option in preparedata[property.data]" ng-init = "newdata[property.name] = (newdata && newdata[property.name] !== undefined ? newdata[property.name]:(property.autoSelectRowNo !== undefined && preparedata[property.data] && preparedata[property.data].length > 0 ? (preparedata[property.data][(property.autoSelectRowNo < 0 || property.autoSelectRowNo > preparedata[property.data].length ? 0 : property.autoSelectRowNo)][property.dataMap.idfield]) : null))">
+                        <option ng-if = "property.nullable === undefined ? true : property.nullable" value = "">{{::property.placeholder}}</option>
+                    </select>
+                    <div ng-switch-when="tree" tree-input
+                         label="{{::property.label}}"
+                         placeholder="{{::property.placeholder}}"
+                         data="preparedata[property.data]"
+                         idfield="{{::property.dataMap.idfield}}"
+                         pidfield="{{::property.dataMap.pidfield}}"
+                         textfield="{{::property.dataMap.textfield}}"
+                         returnfield="{{::property.dataMap.idfield}}"
+                         returnvalue="newdata[property.name]"
+                    ></div>
+                    <span ng-switch-when="inputAndBotton" style="display: table;">
+                        <input ng-readonly="property.readonly"
+                               ng-model="userSelectordata[property.name]" type="text"
+                               class="form-control"
+                               style="display: table-cell;"
+                               placeholder="{{::property.placeholder}}"/>
+                        <span style="display: table-cell;" class="input-group-btn">
+                            <button ng-if="property.buttons"
+                                    ng-repeat="button in property.buttons"
+                                    ng-click="_toAdd(button)"
+                                    class="btn btn-default"
+                                    style="padding: 0 5px;">{{::button.name}}</button>
+                        </span>
+                    </span>
+                    <span ng-switch-when="selectAndBotton" style="display: table;">
+                        <select ng-disabled="property.readonly"
+                                ng-model = "newdata[property.name]" class = "form-control"
+                                ng-options = "option[property.dataMap.idfield] as option[property.dataMap.textfield] for option in preparedata[property.data]" ng-init = "newdata[property.name] = (newdata && newdata[property.name] !== undefined ? newdata[property.name]:(property.autoSelectRowNo !== undefined && preparedata[property.data] && preparedata[property.data].length > 0 ? (preparedata[property.data][(property.autoSelectRowNo < 0 || property.autoSelectRowNo > preparedata[property.data].length ? 0 : property.autoSelectRowNo)][property.dataMap.idfield]) : null))">
+                            <option ng-if = "property.nullable === undefined ? true : property.nullable" value = "">{{::property.placeholder}}</option>
+                        </select>
+                        <span style="display: table-cell;" class="input-group-btn">
+                            <span  ng-if="property.buttons"
+                                   ng-repeat="button in property.buttons"
+                                   ng-click="_toAdd(button)"
+                                   class="addfont"
+                                   style="padding: 0 5px;">&#xe68a;</span>
+                        </span>
+                    </span>
+                    <span ng-switch-when="date">
+                        <div datepicker id="{{::property.name}}" default="property.defaultValue !== undefined" value="newdata[property.name]"></div>
+                    </span>
+                    <span ng-switch-when="superLink" style="display: table;"> <a ng-click="_download(property.executeUrl)"> {{property.name}}</a></span>
+                    <div ng-switch-when="fileUploader">
+                        <div class="col-md-1" file-uploader
+                             button-name = "导入"
+                             multi-selection = "false"
+                             max-size = "50m"
+                             file-types = "req"
+                             execute-url ={{property.executeUrl}}
+                             modal = "false"
+                        ></div>
+                        <span id="fileUploaderTips" ng-if="property.isUpload" >文件已上传</span>
+                    </div>
+                    <span ng-if="property.warning" style="color:red;">
+                        {{property.warning}}
+                    </span>
+                    <div style="color:red;display: inline-block" ng-bind="( property.required && (newdata[property.name].length==0 || newdata[property.name]==null ) ) ? property.requiredContent ||'必填项不能为空' :
+                        (newdata[property.name].length>0 && property.validateregx && preparedata==true && validateregxdata[property.name] ?
+                        ('错误提示：' + property.validateErrorMessage) : '')">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-light btn-sm uc-border-left" align="center" style="width: 100%;">
+            <button ng-if="!param.onlyExite&&!param.nextStepName&&param.hasSonModal" ng-click="listmntok(userSelectordata)" style="margin:0 10px" type="button" class="btn btn-success btn-xs" >提交</button>
+            <button ng-if="!param.onlyExite&&!param.nextStepName&&!param.hasSonModal" ng-click="ok()" style="margin:0 10px" type="button" class="btn btn-success btn-xs" id="submitBtn" >提交</button>
+            <button ng-if="param.nextStepName" ng-click="ok()" style="margin:0 10px" type="button" class="btn btn-success btn-xs"  >{{param.nextStepName}}</button>
+            <button ng-if="!param.onlyExite " ng-click="cancel()" style="margin:0 10px" type="button" class="btn btn-success btn-xs">取消</button>
+            <button ng-if="param.onlyExite" ng-click="cancel()" style="margin:0 10px" type="button" class="btn btn-success btn-xs">{{param.onlyExite.buttomName}}</button>
+            <div class="float-clear"></div>
+        </div>
+        <div id="loading">
+            <i></i>
+        </div>
+    </form>
+</div>

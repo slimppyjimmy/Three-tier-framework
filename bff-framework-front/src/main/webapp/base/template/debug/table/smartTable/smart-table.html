@@ -1,0 +1,25 @@
+<div ng-controller="SmartTableController" >
+    <table st-table="vm.Items" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Item1</th>
+            <th>Item2</th>
+            <th>Item3</th>
+            <th>Item4</th>
+            <th>Item5</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="item in vm.Items">
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.birthDate}}</td>
+            <td>{{item.balance}}</td>
+            <td>{{item.email}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>

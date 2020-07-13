@@ -1,0 +1,7 @@
+{
+    "cname":"wimessagelist",
+    "discribe":"wimessagelist(按钮组)",
+    "demos":[
+        {"demoDiscribe":"基本","html":"wimessagelist/docs/demo1.html","js":"wimessagelist/docs/demo1.js"}
+    ]
+}

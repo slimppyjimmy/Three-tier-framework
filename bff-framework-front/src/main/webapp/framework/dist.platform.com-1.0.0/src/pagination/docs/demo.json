@@ -1,0 +1,8 @@
+{
+    "cname":"pagination",
+    "discribe":"pagination(分页控件)",
+    "demos":[
+        {"demoDiscribe":"基本样式","html":"pagination/docs/demo1.html","js":"pagination/docs/demo1.js"},
+        {"demoDiscribe":"省略显示","html":"pagination/docs/demo2.html","js":"pagination/docs/demo2.js"}
+    ]
+}

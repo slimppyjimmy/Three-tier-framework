@@ -1,0 +1,18 @@
+
+IFRAME 子页面和父页面通信方式说明
+
+1 同域下父子通信
+    1.1 直接利用js
+       直接利用iframeName 实现父调子：
+       （1）方法：iframeName.window.functionName();
+        (2) 元素：iframeName.window.document.getElementById("button")="I changed!"
+       直接利用iframeName 实现子调父：
+       （1）方法：parent.functionName();
+        (2) 元素：parent.window.document.getElementByName("iframeName")[0].style.height="100px"
+
+
+
+2 不同域下父子通信
+    2.1 直接利用js
+   (1)
+

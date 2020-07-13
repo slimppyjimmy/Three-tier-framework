@@ -1,0 +1,69 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "3aebe519-4121-4c9e-9fba-62a35a7dc4ac"
+                , "source": "roles"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "userMembers"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "roleMembers"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="{{::param1.class ? param1.class : 'col-md-3'}}"
+         style="height:100%"
+         list-mnt
+         config='
+        {
+              "messages": [
+                {
+                      "type": "out"
+                    , "name": "nodeChanged"
+                    , "id": "3aebe519-4121-4c9e-9fba-62a35a7dc4ac"
+                }
+            ]
+        }'
+         param="param1"
+    >
+    </div>
+    <div class="{{::param2.class ? param2.class : param3.class ? param3.class : 'col-md-9'}}" >
+        <div list-mnt class="halfHeight gap-vertical"
+             config='{
+                  "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "3aebe519-4121-4c9e-9fba-62a35a7dc4ac"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param2">
+        </div>
+        <div list-mnt class="halfHeight"
+             config='{
+                  "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "3aebe519-4121-4c9e-9fba-62a35a7dc4ac"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param3">
+        </div>
+    </div>
+</div>

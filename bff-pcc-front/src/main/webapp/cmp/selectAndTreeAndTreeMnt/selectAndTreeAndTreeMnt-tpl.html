@@ -1,0 +1,85 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "149e18ab-fe63-4605-83be-cb4a03058540"
+                , "source": "select"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "95bb4957-dbd9-47fd-a91b-e4be783d980b"
+                , "source": "tree"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "list"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="{{::param1.class ? param1.class : param2.class ? param2.class : 'col-md-3'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                      "id": "select"
+                    , "messages": [
+                        {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "149e18ab-fe63-4605-83be-cb4a03058540"
+                        }
+                    ]
+                 }'
+                 param="param1"
+            >
+            </div>
+        </div>
+        <div tree-mnt
+             config='{
+                  "id": "tree"
+                , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "149e18ab-fe63-4605-83be-cb4a03058540"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                    , {
+                          "type": "out"
+                        , "name": "nodeChanged"
+                        , "id": "95bb4957-dbd9-47fd-a91b-e4be783d980b"
+                    }
+                ]
+             }'
+             param="param2"
+        >
+        </div>
+    </div>
+    <div tree-mnt class="{{::param3.class?param3.class:'col-md-9'}}"
+         config='{
+              "id": "checkList"
+            , "messages": [
+                {
+                      "type": "in"
+                    , "name": "parentChanged"
+                    , "id": "95bb4957-dbd9-47fd-a91b-e4be783d980b"
+                    , "handler": "_handelMessage_parentChanged"
+                }
+            ]
+         }'
+         param="param3">
+    </div>
+</div>

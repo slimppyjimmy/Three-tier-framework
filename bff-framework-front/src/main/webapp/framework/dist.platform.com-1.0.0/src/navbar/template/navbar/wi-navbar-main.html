@@ -1,0 +1,21 @@
+<div class = navbar-container ng-class = "{'container': false}">
+    <button type = button class = "navbar-toggle menu-toggler pull-left" id = menu-toggler data-target = #sidebar>
+        <span class = sr-only>Toggle sidebar</span>
+        <span class = icon-bar></span>
+        <span class = icon-bar></span>
+        <span class = icon-bar></span></button>
+    <div class = "navbar-header pull-left">
+        <a href = # class = navbar-brand><small><i class = "fa fa-leaf"></i> 统一应用安全中心</small></a>
+    </div>
+    <div class = "navbar-buttons navbar-header pull-right" role = navigation>
+        <ul class = "nav ace-nav">
+            <li uib-dropdown class = light-blue ng-if="navData.userInfo.notification">
+                <a uib-dropdown-toggle class = dropdown-toggle>
+                    <i class = "ace-icon noticefont fa fa-exclamation-circle icon-animated-vertical" style="font-size:22px;"></i>
+                    <span class = "badge" ng-bind="navData.userInfo.notification"></span>
+                </a>
+            </li>
+            <li uib-dropdown class = light-blue ng-include src = "'framework/dist.platform.com-1.0.0/src/navbar/template/navbar/wi-navbar-user_menu.html'"></li>
+        </ul>
+    </div>
+</div>

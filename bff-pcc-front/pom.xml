@@ -1,0 +1,26 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.dist</groupId>
+		<artifactId>bff-parent</artifactId>
+		<version>0.4.2-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>bff-pcc-front</artifactId>
+	<packaging>war</packaging>
+
+	<!-- 依赖项定义 -->
+	<dependencies>
+		<dependency>
+			<groupId>com.dist</groupId>
+			<artifactId>bff-framework-front</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+</project>

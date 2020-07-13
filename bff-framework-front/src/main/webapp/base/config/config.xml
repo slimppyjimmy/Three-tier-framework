@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GB2312"?>
+
+<config> 
+  <ftp name="DongDian"> 
+    <ftp-host>127.0.0.2</ftp-host>  
+    <ftp-port>21</ftp-port>  
+    <ftp-user>cxl</ftp-user>  
+    <ftp-pwd>longshine</ftp-pwd>  
+    <!-- ftp最多尝试连接次数 -->  
+    <ftp-try>50</ftp-try>  
+    <!-- ftp尝试连接延迟时间 -->  
+    <ftp-delay>10</ftp-delay> 
+  </ftp> 
+</config>

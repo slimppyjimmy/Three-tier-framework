@@ -1,0 +1,8 @@
+{
+   "cname":"Angular-chart",
+   "discribe":"Angular-chart(Angular图标)",
+   "demos":[
+       {"demoDiscribe":"柱状图","html":"uichart/docs/demo1.html","js":"uichart/docs/demo1.js"},
+	   {"demoDiscribe":"饼状图","html":"uichart/docs/demo2.html","js":"uichart/docs/demo2.js"}
+   ]
+}

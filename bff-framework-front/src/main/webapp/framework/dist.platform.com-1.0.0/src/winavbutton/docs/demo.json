@@ -1,0 +1,7 @@
+{
+    "cname":"winavbutton",
+    "discribe":"winavbutton(按钮组)",
+    "demos":[
+        {"demoDiscribe":"基本","html":"winavbutton/docs/demo1.html","js":"winavbutton/docs/demo.js"}
+    ]
+}

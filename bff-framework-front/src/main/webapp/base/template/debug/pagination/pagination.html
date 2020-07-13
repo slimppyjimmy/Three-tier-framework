@@ -1,0 +1,23 @@
+<div ng-controller="PaginationController">
+
+    <ul dist-pagination total-items="totalItems" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></ul>
+    <br/>
+    <ul dist-pagination boundary-links="true" max-size="maxSize" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;"
+        next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChanged()"></ul>
+
+    <br/>
+    <ul dist-pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage"></ul>
+    <br/>
+    <ul dist-pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></ul>
+    <br/>
+    <ul dist-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></ul>
+<br/>
+<ul dist-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
+<br/>
+<ul dist-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false"></ul>
+<br/>
+<ul dist-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></ul>
+<br/>
+<ul dist-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+
+</div>

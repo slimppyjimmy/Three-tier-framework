@@ -1,0 +1,39 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "fb438a24-c068-4ba1-989a-83b6000d6b2f"
+                , "source": "simple-object"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "children"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="{{::param.class ? param.class : 'col-md-12'}}"
+         simple-object-view-page
+         config='
+            {
+                  "messages": [
+                    {
+                          "type": "out"
+                        , "name": "nodeChanged"
+                        , "id": "fb438a24-c068-4ba1-989a-83b6000d6b2f"
+                    }
+                ]
+            }'
+         param="param"
+         data="_data"
+         todo="_todo"
+         refresh="_refresh"
+    >
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div ng-controller="WiAce4ButtonController">
+<div class="row">
+	<div class="col-sm-6">
+		<h3 class="header smaller lighter green">Lables & Badges</h3>
+		<p>
+			<span class="label">Default</span>
+			<span class="label label-success arrowed">Success</span>
+			<span class="label label-warning">
+				<i class="ace-icon fa fa-exclamation-triangle bigger-120"></i> Warning
+			</span>
+			<span class="label label-danger arrowed-in">Danger</span>
+			<span class="label label-info arrowed-in-right arrowed">Info</span>
+			<span class="label label-inverse">Inverse</span>
+		</p>
+		
+		<p>
+			<span class="label label-white middle">Default</span>
+			<span class="label label-success label-white middle">Success</span>
+			<span class="label label-warning label-white middle">
+				<i class="ace-icon fa fa-exclamation-triangle bigger-120"></i> Warning
+			</span>
+			<span class="label label-danger label-white middle">Danger</span>
+			<span class="label label-info label-white middle">Info</span>
+			<span class="label label-purple label-white middle">Inverse</span>
+		</p>
+		
+		<p>
+			<span class="badge">1</span>
+			<span class="badge badge-grey">1</span>
+			<span class="badge badge-success">2</span>
+			<span class="badge badge-warning">4</span>
+			<span class="badge badge-danger">6</span>
+			<span class="badge badge-info">8</span>
+			<span class="badge badge-purple">3</span>
+			<span class="badge badge-inverse">10</span>
+			<span class="badge badge-pink">11</span>
+			<span class="badge badge-yellow">2</span>
+		</p>
+		
+		<p>
+			<span class="label label-lg label-pink arrowed-right">Large</span>
+			<span class="label label-lg label-yellow arrowed-in arrowed-in-right">Yellow</span>
+			<span class="label label-lg label-purple arrowed">Purple</span>
+		</p>
+		<p>
+			<span class="label label-xlg label-primary arrowed arrowed-right">Larger</span>
+			<span class="label label-xlg label-grey arrowed-in-right arrowed-in">Grey</span>
+			<span class="label label-xlg label-light arrowed-in-right">Light</span>
+		</p>
+		<p>
+			<span class="label label-sm label-primary arrowed arrowed-right">Smaller</span>
+		</p>
+
+	</div><!-- /.span -->
+	
+	<div class="col-sm-6">
+		<h3 class="header smaller lighter red">Pagination</h3>
+		<div>
+			<uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" direction-links="false" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+        </div>
+
+		<div>
+			<uib-pager total-items="totalItems" ng-model="currentPage" next-text="Newer &rarr;" previous-text="&larr; Older"></uib-pager>
+		</div>
+		
+	</div><!-- /.span -->
+</div><!-- /.row -->
+</div>

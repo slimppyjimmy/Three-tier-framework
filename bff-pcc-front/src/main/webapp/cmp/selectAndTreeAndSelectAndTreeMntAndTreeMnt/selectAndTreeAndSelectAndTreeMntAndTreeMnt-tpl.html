@@ -1,0 +1,156 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "E081DB3C-CC0C-49B2-AF2E-39BBD90A96B9"
+                , "source": "select1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree1"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "BFDC5360-8F23-4C72-998A-27C682709377"
+                , "source": "tree1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "select2"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "CD2DDA26-510D-454F-9474-C424C81B91F1"
+                , "source": "select2"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree2"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+            , {
+                  "type": "forward"
+                , "id": "6AE051C0-6E51-443A-85C4-3ABD157F65F9"
+                , "source": "tree2"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree3"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class=" {{::param4.class ? param4.class : param5.class ? param5.class : 'col-md-4'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                      "id": "select1"
+                    , "messages": [
+                        {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "E081DB3C-CC0C-49B2-AF2E-39BBD90A96B9"
+                        }
+                    ]
+                 }'
+                 param="param1"
+            >
+            </div>
+            <div tree-mnt class=""
+                 config='{
+                      "id": "tree1"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "E081DB3C-CC0C-49B2-AF2E-39BBD90A96B9"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "BFDC5360-8F23-4C72-998A-27C682709377"
+                        }
+                    ]
+                 }'
+                 param="param2"
+            >
+            </div>
+        </div>
+    </div>
+    <div class="{{::param4.class ? param4.class : param5.class ? param5.class : 'col-md-4'}}">
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding=""
+                 config='{
+                      "id": "select2"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "BFDC5360-8F23-4C72-998A-27C682709377"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "CD2DDA26-510D-454F-9474-C424C81B91F1"
+                        }
+                    ]
+                 }'
+                 param="param3"
+            >
+            </div>
+            <div tree-mnt class=""
+                 config='{
+                      "id": "tree2"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "CD2DDA26-510D-454F-9474-C424C81B91F1"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "6AE051C0-6E51-443A-85C4-3ABD157F65F9"
+                        }
+                    ]
+                 }'
+                 param="param4">
+            </div>
+        </div>
+    </div>
+    <div class="{{::param4.class ? param4.class : param5.class ? param5.class : 'col-md-4'}}">
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div tree-mnt class=""
+                 config='{
+                      "id": "tree3"
+                    , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "6AE051C0-6E51-443A-85C4-3ABD157F65F9"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                    ]
+                 }'
+                 param="param5">
+            </div>
+        </div>
+    </div>
+</div>

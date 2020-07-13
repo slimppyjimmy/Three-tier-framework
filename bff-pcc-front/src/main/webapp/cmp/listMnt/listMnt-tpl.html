@@ -1,0 +1,78 @@
+<div >
+    <div ng-if="_showWidget" class="fullHeight td-form">
+        <div class="btn-light btn-sm control-header" auto-padding>
+            <label class="control-header-title">{{::param.title}}</label>
+            <input ng-if="param.filterFields" ng-change="_toFilter()" ng-model="_filter.text" type="text"
+                   class="filter-box"
+                   placeholder="请输入过滤文本" style="border-radius: 5px !important;margin-top:3px;"/>
+            <span style="float: right;margin-top:4px;margin-right:4px;">
+                <span ng-if="param.help && (param.help.content!==''|| param.help.templateUrl!=='' )"  ng-click="_help(param.help)" style="float: left;margin-right:4px;"
+                      class="helpfont">&#xe77c;</span>
+                <button ng-if="button.isPermitted" ng-repeat="button in param.buttons" ng-click="_todo(button)"
+                        class="btn btn-success btn-xs btn-gap">{{::button.name}}</button>
+                <button ng-if="!_searchBar && (param.refreshable === undefined ||param.refreshable)"
+                        class="btn btn-success btn-xs" ng-click="_list($event)">刷新{{param.refreshInterval}}</button>
+                <button ng-if="param.collapsed!=undefined" class="btn btn-success btn-xs" ng-click="switchCollapse()(param, !param._collapsed);;">{{param._collapsed?"展开":"折叠"}}</button>
+            </span>
+        </div>
+        <div ng-if="!param._collapsed" class="fullHeight scroll clear-float">
+            <div searchbar config="param.searchBar" ng-if="param.searchBar"  ng-show="param.searchBar" ></div>
+            <table class="table table-striped table-bordered table-hover row-border hover nomargin">
+                <thead>
+                <tr>
+                    <th ng-if="param.checkbox" class="center" >
+                        <label class="pos-rel">
+                            <input type="checkbox" class="ace" ng-model="_filter.selectAll" ng-click = "_allClick(_filter.selectAll)"/>
+                            <span class="lbl"></span>
+                        </label>
+                    </th>
+                    <th ng-if="showIndexColumn" class="center" style="{{indexColumnConf.style}}">
+                        {{indexColumnConf.headName}}
+                    </th>
+                    <th ng-repeat="column in param.grid.columns" class="{{column.header.class}}"
+                        style="{{column.header.style}}">{{::column.header.name}}
+                    </th>
+                    <th ng-if="(param.grid.buttons && param.grid.buttons.length> 0)" style="text-align: center">
+                        操作
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="_filter.result" ng-repeat="row in _filter.result track by $index"
+                    ng-click="_onNodeClicked(row)"
+                    class="{{_focused && _focused[param.idfield]===row[param.idfield] ? 'tr-active': ''}}"
+                    style="{{param.grid.precondition ? _getConditionResult(param.grid.precondition, row) : ''}}">
+                    <td ng-if="param.checkbox" class="center" >
+                        <label class="pos-rel">
+                            <input type='checkbox' class="ace" ng-model="row.selected" ng-click="_oneClick(row)"/>
+                            <span class="lbl"></span></label>
+                    </td>
+                    <td ng-if="showIndexColumn" class="center">
+                        {{$index+1}}
+                    </td>
+                    <td ng-repeat="column in param.grid.columns" class="{{column.data.class}}"
+                        style="{{column.data.style}}">{{column.data.name=='$index' ? $parent.$index+1 :
+                        (row[column.data.name] === true ? '是' : (row[column.data.name] === false ? '否' :
+                        row[column.data.name]))}}
+                    </td>
+                    <td ng-if="(param.grid.buttons && param.grid.buttons.length> 0) ">
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <button ng-if="button.isPermitted" ng-repeat="button in param.grid.buttons"
+                                    ng-click="_todo(button, row)" class="btn btn-success btn-xs btn-gap"
+                                    ng-class="button.precondition === undefined || row[button.precondition.name] === button.precondition.value ? '' : 'hide'">
+                                {{::button.name}}
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-if="param.pagination" class="table-pagination" ng-show="_showPageBar">
+                <dist-page-dir config="_pageConfig"></dist-page-dir>
+            </div>
+            <div id="userMntLoading">
+                <i></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div ng-controller="ChartController">
+
+    <div fusioncharts
+           width="600"
+           height="400"
+           type="column2d"
+           datasource="{{vm.chartDataSource}}"
+    >
+    </div>
+
+    <fusioncharts
+            width="600"
+            height="400"
+            type="pie3d"
+            datasource="{{vm.chartDataSource2}}"
+    ></fusioncharts>
+
+    <div fusioncharts
+         width="600"
+         height="400"
+         type="msline"
+         chart="{{vm.attrs}}"
+         categories="{{vm.categories}}"
+         dataset="{{vm.dataset}}"
+    ></div>
+</div>

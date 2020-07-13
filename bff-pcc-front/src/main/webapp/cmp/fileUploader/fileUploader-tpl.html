@@ -1,0 +1,14 @@
+<div>
+    <input type="button" class="btn btn-success btn-xs" style="{{::vm.param.buttonStyle}}" value="{{::vm.param.buttonName}}" id="158022408" />
+    <div class="clear-float">
+        <wi-fileupload
+                wi-url="{{::vm.param.executeUrl}}"
+                wi-trigger="{{::vm.param.buttonId}}"
+                wi-multisel={{::vm.param.multiSelection}}
+                wi-max-size={{::vm.param.maxSize}}
+                wi-mime-types="{{::vm.param.mimeTypes}}"
+                wi-modal={{::vm.param.modal}}
+        >
+        </wi-fileupload>
+    </div>
+</div>

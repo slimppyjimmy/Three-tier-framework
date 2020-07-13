@@ -1,0 +1,27 @@
+ 
+
+<div ng-controller="PaginationDemo2Controller">
+	<!--不添加省略-->
+	<p>不添加省略</p>
+    <ul wi-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></ul>
+    <br/>
+	
+	<!--两端添加省略-->
+	<p>两端添加省略</p>
+    <ul wi-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
+    <br/>
+	
+	<!--右侧添加省略-->
+	<p>右侧添加省略</p>
+    <ul wi-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false"></ul>
+    <br/>
+	
+	<!--中间部分添加省略-->
+	<p>中间部分添加省略</p>
+    <ul wi-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></ul>
+    <br/>
+	
+	<!--控件前部分添加省略-->
+	<p>控件前部分添加省略</p>
+    <ul wi-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+</div>

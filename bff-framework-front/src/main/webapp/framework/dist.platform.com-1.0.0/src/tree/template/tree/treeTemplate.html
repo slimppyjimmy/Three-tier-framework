@@ -1,0 +1,35 @@
+<ul class="wi-tree">
+    <li class="center"  ng-repeat="data in vm._data | orderBy : conf.orderby">
+        <div ng-mouseenter="conf.onitemmouseenter($event, data)" ng-mouseleave="conf.onitemmouseleave(data)" class="wi-tree-item" ng-class="{'wi-tree-current':data['__current']}"
+             style="{{'padding-left: '+16*(data.__level+(data.children?0:1))+'px;'+(vm._precondition ? vm.getConditionResult(vm._precondition, data) : '')}}"
+             ng-click="handler.clickRow(data)"
+             ng-mouseenter="handler.toggleHover(data)" ng-mouseleave="handler.toggleHover(data)">
+            <span class="icon-{{data['__closed']?'plus':'minus'}}"
+                  ng-if="data['children']"
+                  ng-click="handler.toggleNode($event,data)"></span>
+            <!-- 选中或半选 -->
+            <input type="checkbox" class="wi-checkbox"
+                   ng-class="{'wi-tree-transparent-50':data['__semi']}"
+                   ng-if="conf.multiselect"
+                   ng-disabled="vm.disabled"
+                   ng-checked="data['__selected']||data['__semi']"
+                   ng-click="handler.clickInput(data)"
+            />
+            <!--<label for="check"class="wi-tree-loading" ng-if="data['__loading']"></label>-->
+            <!--根据条件显示不同的图标-->
+            <span class="iconfont" ng-if="vm._settingicoprecondition" ng-repeat="precondition in vm._settingicoprecondition">{{vm._getConditionResult(precondition, data)}}</span>
+            <!-- 优先级：数据项中 cls，根节点定义的 pCls 或 cCls，默认图标 -->
+            <span class="wi-tree-icon {{data['cls']||(data['children']?
+                conf.pCls||'icon-folder-'+(data['__closed']?'close':'open'):
+                conf.cCls)}}"
+                  ng-if="!data['__loading']&&!vm._settingicoprecondition"></span>
+            <span>{{data[conf.labelfield]}}</span>
+            <span ng-if="conf.itemrenderer"
+                  ng-include src="conf.itemrenderer"></span>
+
+        </div>
+        <wi-tree ng-if="data['children'] && !data['__closed']"
+                 dataProvider="data['children']">
+        </wi-tree>
+    </li>
+</ul>

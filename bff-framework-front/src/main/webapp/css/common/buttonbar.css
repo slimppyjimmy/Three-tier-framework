@@ -1,0 +1,155 @@
+
+/*buttonbar工具栏样式*/
+.button-bar {
+    position: relative;
+    z-index: auto;
+    border-bottom: 1px solid #E5E5E5;
+    background-color: #F5F5F5;
+    min-height: 41px;
+    line-height: 40px;
+    padding: 0 12px 0 0;
+}
+
+@media (min-width: 992px) {
+    .buttonbar-fixed {
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: auto;
+        z-index: 1024;
+    }
+    .buttonbar-fixed + .page-content {
+        padding-top: 49px;
+    }
+    .sidebar + .main-content .buttonbar-fixed {
+        left: 190px;
+    }
+    body.mob-safari {
+        /**
+         //not needed because breadcrumbs is not fixed at this point
+         media (max-width: @screen-topbar-down) {
+          .navbar-fixed-top:not(.navbar-collapse) + .main-container .buttonbar-fixed {
+            top: (@navbar-min-height * 2);
+          }
+         }*/
+    }
+    body.mob-safari .buttonbar-fixed {
+        top: 45px;
+    }
+}
+@media (min-width: 992px) {
+    .sidebar.compact + .main-content .buttonbar-fixed {
+        left: 105px;
+    }
+}
+@media (min-width: 992px) {
+    .sidebar.menu-min + .main-content .buttonbar-fixed {
+        left: 43px;
+    }
+}
+@media (min-width: 992px) and (max-width: 991px) {
+    .buttonbar-fixed,
+    .sidebar.menu-min + .main-content .buttonbar-fixed {
+        left: 0;
+    }
+    .sidebar.responsive-min + .main-content .buttonbar-fixed,
+    .sidebar.responsive-max + .main-content .buttonbar-fixed {
+        left: 43px;
+    }
+}
+@media (min-width: 992px) {
+    .container.main-container .buttonbar-fixed {
+        left: auto;
+        right: auto;
+        width: 744px;
+    }
+    .container.main-container .sidebar + .main-content .buttonbar-fixed {
+        left: auto;
+        right: auto;
+        width: 554px;
+    }
+    .container.main-container .sidebar.compact + .main-content .buttonbar-fixed {
+        width: 639px;
+    }
+    .container.main-container .sidebar.menu-min + .main-content .buttonbar-fixed {
+        left: auto;
+        right: auto;
+        width: 701px;
+    }
+}
+@media (min-width: 992px) {
+    .container.main-container .sidebar.compact + .main-content .buttonbar-fixed {
+        width: 859px;
+    }
+}
+@media (min-width: 992px) {
+    .container.main-container .buttonbar-fixed {
+        width: 964px;
+    }
+    .container.main-container .sidebar + .main-content .buttonbar-fixed {
+        width: 774px;
+    }
+    .container.main-container .sidebar.menu-min + .main-content .buttonbar-fixed {
+        width: 921px;
+    }
+}
+@media (min-width: 1200px) {
+    .container.main-container .sidebar.compact + .main-content .buttonbar-fixed {
+        width: 1059px;
+    }
+}
+@media (min-width: 1200px) {
+    .container.main-container .buttonbar-fixed {
+        width: 1164px;
+    }
+    .container.main-container .sidebar + .main-content .buttonbar-fixed {
+        width: 974px;
+    }
+    .container.main-container .sidebar.menu-min + .main-content .buttonbar-fixed {
+        width: 1121px;
+    }
+}
+@media (min-width: 992px) and (max-width: 991px) {
+    .container.main-container .sidebar.compact + .main-content .buttonbar-fixed {
+        width: 744px;
+    }
+}
+@media (min-width: 992px) and (max-width: 991px) {
+    .container.main-container .buttonbar-fixed,
+    .container.main-container .sidebar.menu-min + .main-content .buttonbar-fixed {
+        width: 744px;
+    }
+    .container.main-container .sidebar.responsive-min + .main-content .buttonbar-fixed,
+    .container.main-container .sidebar.responsive-max + .main-content .buttonbar-fixed {
+        left: auto;
+        right: auto;
+        width: 701px;
+    }
+}
+/**
+@media (max-width: @grid-float-breakpoint-max) {
+ .buttonbar-fixed {
+	position: relative;
+	left: auto !important;
+	right: auto !important;
+	top: auto !important;
+	width: auto !important;
+
+	+ .page-content {
+		padding-top: @page-content-padding-top;
+	}
+ }
+}
+*/
+@media (min-width: 992px) {
+    .h-sidebar + .main-content .buttonbar.buttonbar-fixed {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: auto;
+        width: auto;
+    }
+    .h-sidebar + .main-content .page-content {
+        padding-top: 12px;
+    }
+}

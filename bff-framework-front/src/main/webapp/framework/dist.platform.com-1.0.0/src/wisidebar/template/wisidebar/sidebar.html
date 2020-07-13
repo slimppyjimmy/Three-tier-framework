@@ -1,0 +1,10 @@
+<!--<div class="sidebar-shortcuts" ng-include="'framework/dist.platform.com-1.0.0/src/wisidebar/template/wisidebar/shortcuts.html'"></div>-->
+
+<ul class="nav nav-list">
+    <li ng-repeat="item in sidebar track by $index" ng-include="'framework/dist.platform.com-1.0.0/src/wisidebar/template/wisidebar/item.html'" ng-class="{'open':item.submenu && isSubOpen(item.name), 'active': isActiveItem(item.name), 'hover':sideConfig.hover, 'highlight': sideConfig.highlight}"></li>
+</ul>
+
+<div class="sidebar-toggle sidebar-collapse">
+    <i class='ace-icon fa' ng-class="{'fa-angle-double-left': !sideConfig.minimized, 'fa-angle-double-right': sideConfig.minimized}"></i>
+</div>
+

@@ -1,0 +1,64 @@
+<div>
+    <div class = "fullHeight td-form">
+        <div class = "btn-light btn-sm control-header" auto-padding>
+            <label class = "control-header-title">{{::param.title}}</label>
+            <!--<input ng-if="param.filterFields" ng-change = "_toFilter()" ng-model = "_filter.text" type = "text" class = "filter-box"-->
+            <!--placeholder = "请输入过滤文本" style = "border-radius: 5px !important;"/>-->
+            <span style = "float: right">
+                <button ng-if = "param.buttons" ng-repeat = "buttonConfig in param.buttons"
+                        ng-click = "todo()(buttonConfig, newdata)" class = "btn btn-success btn-xs btn-gap">{{::buttonConfig.name}}</button>
+                <button ng-if = "param.refreshable === undefined ||param.refreshable" class = "btn btn-success btn-xs" ng-click = "refresh()()">刷新</button>
+            </span>
+        </div>
+        <form class = "form-horizontal">
+            <div class = "container-fluid">
+                <div class = "form-group form-group-sm" ng-repeat = "property in param.properties">
+                    <label ng-hide = "property.hide || newdata[property.precondition.name]!=property.precondition.value"
+                           class = "col-sm-2 control-label">{{property.label}}</label>
+                    <div ng-hide = "property.hide || newdata[property.precondition.name]!=property.precondition.value"
+                         class = "col-sm-9" ng-switch on = "property.type"
+                         ng-init="newdata[property.name]=newdata[property.name]==undefined?property.defaultValue:newdata[property.name]">
+                        <input ng-switch-when = "input" ng-readonly = "property.readonly"
+                               ng-model = "newdata[property.name]" type = "text"
+                               class = "form-control"
+                               placeholder = "{{::property.placeholder}}"/>
+                        <input ng-switch-when = "password" ng-readonly = "property.readonly"
+                               ng-model = "newdata[property.name]" type = "password"
+                               class = "form-control"
+                               placeholder = "{{::property.placeholder}}"/>
+                        <div ng-switch-when = "radio"
+                             ng-init = "newdata[property.name]=newdata[property.name]==undefined?property.defaultValue:newdata[property.name].toString()">
+                            <label class = "radio-inline">
+                                <input type = "radio" name = "{{::property.name}}" ng-model = "newdata[property.name]"
+                                       value = "true"/>是
+                            </label>
+                            <label class = "radio-inline">
+                                <input type = "radio" name = "{{::property.name}}" ng-model = "newdata[property.name]"
+                                       value = "false"/>否
+                            </label>
+                        </div>
+                        <textarea ng-switch-when = "textarea" ng-model = "newdata[property.name]" type = "text"
+                                  class = "form-control" placeholder = "{{::property.placeholder}}"
+                                  rows = "3">
+                        </textarea>
+                        <select ng-switch-when = "list" ng-disabled="property.readonly"
+                                ng-model = "newdata[property.name]" class = "form-control"
+                                ng-options = "option[property.dataMap.idfield] as option[property.dataMap.textfield] for option in preparedata[property.data]" ng-init = "newdata[property.name] = preparedata && preparedata[property.data] && preparedata[property.data].length > 0 ? preparedata[property.data][property.autoSelectRowNo === undefined || property.autoSelectRowNo < 0 || property.autoSelectRowNo > preparedata[property.data].length ? 0 : property.autoSelectRowNo ][property.dataMap.idfield] : null">
+                            <option ng-if = "property.nullable === undefined ? true : property.nullable" value = "">{{::property.placeholder}}</option>
+                        </select>
+                        <div ng-switch-when = "tree" tree-input
+                             label = "{{::property.label}}"
+                             placeholder = "{{::property.placeholder}}"
+                             data = "preparedata[property.data]"
+                             idfield = "{{::property.dataMap.idfield}}"
+                             pidfield = "{{::property.dataMap.pidfield}}"
+                             textfield = "{{::property.dataMap.textfield}}"
+                             returnfield = "{{::property.dataMap.idfield}}"
+                             returnvalue = "newdata[property.name]"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: wanggb
+  Date: 2016/7/1
+  Time: 16:26
+  To change this template use File | Settings | File Templates.
+-->
+
+<html lang="en" ng-app="NavbarApp">
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title ng-bind-template="{{pageTitle || 'Welcome'}} - navbar">Welcome - navbar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="../../lib/css/dist-platform-lib-all-1.0.0.css"/>
+</head>
+<body ng-controller="MainController">
+<wi-navbar nav-data="vm.navbar" config-data="vm.configData"></wi-navbar>
+<!--lib-->
+<script type="text/javascript" src="../../lib/js/dist-platform-lib-all-1.0.0.js"></script>
+<script type="text/javascript" src="navbar.js" ></script>
+<!--controllers-->
+<script>
+
+angular.module('NavbarApp',['dist.ui.navbar','ui.bootstrap'])
+ .controller('MainController',['$scope',function($scope){
+ 
+   var vm=$scope.vm={};
+   
+     vm.configData={
+	 userImage:'../../themes/default/images/navbar/user.jpg',
+	 
+	 }
+     vm.navbar={
+	"tasks": {
+		"count": 2,
+		"latest": [{
+			"title": "业务审批",
+			"percentage": 65
+		},
+		{
+			"title": "在办事项",
+			"percentage": 35,
+			"progress-bar-type": "danger"
+		}]
+	},
+
+	"notifications": {
+		"count": 4,
+		"latest": [{
+			"title": "新接事项",
+			"icon": "fa fa-comment",
+			"icon-class": "btn-pink",
+			"badge": "+12",
+			"badge-class": "badge-info"
+		},
+		{
+			"title": "监察预警",
+			"icon": "fa fa-user",
+			"icon-class": "btn-primary"
+		},
+		{
+			"title": "决策报告",
+			"icon": "fa fa-shopping-cart",
+			"icon-class": "btn-success",
+			"badge": "+8",
+			"badge-class": "badge-success"
+		},
+		{
+			"title": "公文通知",
+			"icon": "fa fa-twitter",
+			"icon-class": "btn-info",
+			"badge": "+11",
+			"badge-class": "badge-info"
+		}]
+	},
+
+	"messages": {
+		"count": 5,
+		"latest": [{
+			"name": "张三",
+			"img": "avatar.png",
+			"time": "1分钟以前",
+			"summary": "相关会议通知已发送给您，请注意查收 ..."
+		},
+		{
+			"name": "李四",
+			"img": "avatar3.png",
+			"time": "20分钟以前",
+			"summary": "办理审批业务通知已收到，预计xx年xx月 ..."
+		},
+		{
+			"name": "王五",
+			"img": "avatar4.png",
+			"time": "3:15 pm",
+			"summary": "相关会议通知已发送给您，请注意查收 ..."
+		},
+		{
+			"name": "王薇",
+			"img": "avatar2.png",
+			"time": "1:33 pm",
+			"summary": "办理审批业务通知已收到，预计xx年xx月 ..."
+		},
+		{
+			"name": "坦克",
+			"img": "avatar5.png",
+			"time": "10:09 am",
+			"summary": "相关会议通知已发送给您，请注意查收  ..."
+		}]
+	}
+}
+ 
+ }])
+
+</script>
+</body>
+</html>

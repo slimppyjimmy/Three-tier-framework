@@ -1,0 +1,7 @@
+{
+    "cname":"witabbar",
+    "discribe":"witabbar(按钮栏)",
+    "demos":[
+        {"demoDiscribe":"基本","html":"witabbar/docs/demo1.html","js":"witabbar/docs/demo1.js"}
+    ]
+}

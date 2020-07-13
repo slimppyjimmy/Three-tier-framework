@@ -1,0 +1,7 @@
+{
+    "cname":"wisidebar",
+    "discribe":"wisidebar(侧边栏)",
+    "demos":[
+        {"demoDiscribe":"基本","html":"wisidebar/docs/demo1.html","js":"wisidebar/docs/demo1.js"}
+    ]
+}

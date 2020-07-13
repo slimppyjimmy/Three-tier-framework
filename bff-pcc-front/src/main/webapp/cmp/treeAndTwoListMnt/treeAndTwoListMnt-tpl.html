@@ -1,0 +1,72 @@
+<div
+    config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "e2aa87bb-9d04-4ff8-93ee-6bf083de605a"
+                , "source": "parent-tree"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "child1-list"
+                        , "targetMessageName": "parentChange"
+                    }
+                    , {
+                          "target": "child2-list"
+                        , "targetMessageName": "parentChange"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+>
+    <div class="{{::param1.class ? param1.class : 'col-md-3'}}"
+         style="height:100%"
+         tree-mnt
+         config='
+        {
+              "id": "parent-tree"
+              , "messages": [
+                {
+                      "type": "out"
+                    , "name": "nodeChanged"
+                    , "id": "e2aa87bb-9d04-4ff8-93ee-6bf083de605a"
+                }
+            ]
+        }'
+         param="param1"
+    >
+    </div>
+    <div class="{{::param2.class ? param2.class : param3.class ? param3.class : 'col-md-9'}}" >
+        <div list-mnt class="halfHeight gap-vertical"
+             config='{
+                  "id": "child1-list"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "e2aa87bb-9d04-4ff8-93ee-6bf083de605a"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param2">
+        </div>
+        <div list-mnt class="halfHeight"
+             config='{
+                  "id": "child2-list"
+                  , "messages": [
+                    {
+                          "type": "in"
+                        , "name": "parentChanged"
+                        , "id": "e2aa87bb-9d04-4ff8-93ee-6bf083de605a"
+                        , "handler": "_handelMessage_parentChanged"
+                    }
+                ]
+             }'
+             param="param3">
+        </div>
+    </div>
+</div>

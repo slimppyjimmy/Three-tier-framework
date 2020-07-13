@@ -1,0 +1,145 @@
+<div
+        config='
+    {
+          "messages": [
+            {
+                  "type": "forward"
+                , "id": "87924ea1-899d-47ae-a683-84bd634cce9c"
+                , "source": "select1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "tree1"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            },
+            {
+                  "type": "forward"
+                , "id": "df4e921e-0e71-4a37-91dc-a900bb877b70"
+                , "source": "tree1"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "select2"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            },
+            {
+                  "type": "forward"
+                , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                , "source": "select2"
+                , "sourceMessageName": "nodeChanged"
+                , "targets": [
+                    {
+                          "target": "child1-list1"
+                        , "targetMessageName": "parentChanged"
+                    }
+                    , {
+                          "target": "child2-tree2"
+                        , "targetMessageName": "parentChanged"
+                    }
+                ]
+            }
+        ]
+    }
+    '
+        expand-class = 'p85Height'
+        collapse-class = 'headerOnlyHeight'
+>
+    <div class="{{::param1.class ? param1.class : param2.class ? param2.class : 'col-md-3'}}" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                          "id": "select1"
+                        , "messages": [
+                            {
+                                  "type": "out"
+                                , "name": "nodeChanged"
+                                , "id": "87924ea1-899d-47ae-a683-84bd634cce9c"
+                            }
+                        ]
+                     }'
+                 param="param1"
+            >
+            </div>
+            <div tree-mnt
+                 config='
+                {
+                      "id": "tree1"
+                      , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "87924ea1-899d-47ae-a683-84bd634cce9c"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                        , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "df4e921e-0e71-4a37-91dc-a900bb877b70"
+                        }
+                    ]
+                }'
+                 param="param2"
+            >
+            </div>
+        </div>
+    </div>
+
+
+    <div class="{{::param3.class ? param3.class : param4.class ? param4.class : param5.class ? param5.class : 'col-md-9'}}  gap-vertical" >
+        <div><!--必须使用一个空div，否则simple-select的宽度会不正常-->
+            <div simple-select class="gap-vertical" auto-padding
+                 config='{
+                          "id": "select2"
+                        , "messages": [
+                            {
+                                  "type": "in"
+                                , "name": "parentChanged"
+                                , "id": "df4e921e-0e71-4a37-91dc-a900bb877b70"
+                                , "handler": "_handelMessage_parentChanged"
+                            } , {
+                              "type": "out"
+                            , "name": "nodeChanged"
+                            , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                        }
+                        ]
+                     }'
+                 param="param3"
+            >
+            </div>
+            <div list-mnt  ng-class="_collapseableControls[0]._heightClass" class="gap-vertical"
+                 config='{
+                      "id": "child1-list1"
+                      , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                    ]
+                 }'
+                 param="_collapseableControls[0]"
+                 switch-collapse = "_switchCollapse">
+            </div>
+            <div tree-mnt ng-class="_collapseableControls[1]._heightClass"
+                 config='{
+                      "id": "child2-tree2"
+                      , "messages": [
+                        {
+                              "type": "in"
+                            , "name": "parentChanged"
+                            , "id": "8923b8c9-b81d-4603-a227-56a0ad1c4ed7"
+                            , "handler": "_handelMessage_parentChanged"
+                        }
+                    ]
+                 }'
+                 param="_collapseableControls[1]"
+                 switch-collapse = "_switchCollapse">
+            </div>
+        </div>
+    </div>
+</div>

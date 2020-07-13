@@ -1,0 +1,7 @@
+{
+   "cname":"ui.grid",
+   "discribe":"ui.grid(ui.grid table表)",
+   "demos":[
+       {"demoDiscribe":"table表","html":"uigrid/docs/demo1.html","js":"uigrid/docs/demo1.js"}
+   ]
+}

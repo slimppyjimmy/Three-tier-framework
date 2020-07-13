@@ -1,0 +1,47 @@
+
+    <div class="row" style="width:100%;margin:0;">
+       <div ng-if="true" style=";text-align:center; width:30px;height:40px;background:#4F99C6!important;float:left">
+           <i class="fa fa-tasks fa-x" style="line-height:38px;color:white;cursor:pointer;outline:none"></i>
+       </div>
+       <div ng-if="true" style="height:40px;margin-left:30px;background:#f2f2f2;">
+           <div ng-if="true" style="text-align:center; width:50px;height:40px;background:#f2f2f2;float:left;">
+               <span style="margin-left: 5px;margin-top: -2px;padding: 3px 0;display: block;color: #4F99C6!important;width: 38px;font-size: 13px;text-shadow: 0 0 2px rgba(44, 133, 255, .3);">快捷导航</span>
+           </div>
+           <div ng-if="true" style="height:40px;">
+               <div class="row" style="margin-left:50px;margin-right:0;">
+                   <div class="col-md-12" style="padding:0;">
+                       <div class="col-md-8" style="height:40px;">
+                           <!-- Single button -->
+                           <div class="btn-group" ng-init="buttonBorder=true" style="text-align:center">
+                               <p style="line-height:36px;white-space:nowrap">
+                                   <button type="button" class="btn btn-white btn-default" style="margin-right:5px;" ng-class="{'no-border': !buttonBorder}">新建</button>
+                                   <button type="button" class="btn btn-white btn-primary" style="margin-right:5px;" ng-class="{'no-border': !buttonBorder}">预审箱</button>
+                                   <button type="button" class="btn btn-white btn-info" style="margin-right:5px;" ng-class="{'no-border': !buttonBorder}">在办箱</button>
+                                   <button type="button" class="btn btn-white btn-success" style="margin-right:5px;" ng-class="{'no-border': !buttonBorder}">我的公文</button>
+                                   <button type="button" class="btn btn-white btn-warning" style="margin-right:5px;" ng-class="{'no-border': !buttonBorder}">我的会议</button>
+                               </p>
+                           </div>
+                       </div>
+                       <div class="col-md-4" style="padding:0; height:40px;">
+                           <div style="height:34px;margin-top:5px;border-left:solid 1px #ccc;">
+                               <div style="float:left;margin:0 9px;height: 30px;margin-top:0px;">
+                                   <i class="ace-icon fa fa-refresh bigger-130" style="line-height:32px;cursor:pointer;color:#428BCA;"><span style="font-size:13px">&nbsp&nbsp换一组</span></i>
+                               </div>
+                               <div class="input-group" style="margin-right:14px;font-size:13px;">
+                                   <input type="text" class="form-control input-sm"style="font-size:13px;" placeholder="搜一下">
+                                   <span class="input-group-btn">
+                                       <button class="btn btn-sm btn-info no-radius" type="button">
+                                           <i class="ace-icon fa fa-search"></i>
+                                       </button>
+                                   </span>
+                               </div>
+                               <div style="clear:both;"></div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div style="clear:both"></div>
+       </div>
+       <div style="clear:both;"></div>
+   </div>

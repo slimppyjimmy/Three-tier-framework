@@ -1,0 +1,40 @@
+<div>
+    <div ng-if="_showWidget" class = "fullHeight">
+        <div class="btn-light btn-sm control-header" auto-padding>
+            <label class = "control-header-title">{{::param.title}}</label>
+            <input ng-if="param.filterFields" ng-change = "_toFilter()" ng-model = "_filter.text" type = "text" class = "filter-box"
+                   placeholder = "请输入过滤文本" style = "border-radius: 5px !important;margin-top:3px"/>
+            <span style="float: right;margin-top:4px;margin-right:4px;">
+                <button ng-if="button.isPermitted" ng-repeat="button in param.buttons" ng-click="_todo(button, _focused)"
+                        class="btn btn-success btn-xs btn-gap">{{::button.name}}</button>
+                <button ng-if="!_searchBar && (param.refreshable === undefined ||param.refreshable)" class="btn btn-success btn-xs" ng-click="_list($event)" id="treeFreshBtn">刷新{{param.refreshInterval}}</button>
+                <button ng-if="param.collapsed!=undefined" class="btn btn-success btn-xs" ng-click="switchCollapse()(param, !param._collapsed);;">{{param._collapsed?"展开":"折叠"}}</button>
+            </span>
+        </div>
+        <div ng-if="!param._collapsed" class="fullHeight scroll clear-float">
+            <div searchbar config="param.searchBar" ng-if="param.searchBar"  ng-show="param.searchBar" ></div>
+            <popup-menu onmenuclick="vm.onMenuClick" model="vm.menuModel"></popup-menu>
+            <wi-tree dataProvider="_filter.result"
+                     idfield="{{::param.idfield}}"
+                     pidfield="{{::param.pidfield}}"
+                     labelfield="{{::param.textfield}}"
+                     multiselect="{{::_multiselect}}"
+                     listtype="_listtype"
+                     disabled="param.disabled"
+                     precondition="param.precondition"
+                     settingicoprecondition="param.settingicoprecondition"
+                     onItemClick="_onNodeClicked"
+                     onselect="_onNodeChecked"
+                     oncancelselect="_onNodeUnchecked"
+                     wid="_treeModel"
+                     onloadbranch="_asyncList"
+                     onitemmouseenter="vm.onNodeMouseEnter"
+                     onitemmouseleave="vm.onNodeMouseLeave"
+
+            ></wi-tree>
+            <div id="orgMntLoading">
+                <i></i>
+            </div>
+        </div>
+    </div>
+</div>

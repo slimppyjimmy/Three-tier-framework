@@ -1,0 +1,16 @@
+<a uib-dropdown-toggle class = dropdown-toggle>
+    <!--<img class = nav-user-photo ng-src = {{navData.userInfo.icon||configData.defaultUserIcon}} alt = "个人图标">-->
+    <span class = user-info>
+        <small ng-if="!navData.userInfo.agentName">欢迎,</small>
+        {{navData.userInfo.name}}
+        <small ng-if="navData.userInfo.agentName">{{navData.userInfo.agentName}}（代）</small>
+    </span>
+    <i class = "ace-icon fa fa-caret-down"></i>
+</a>
+<ul class = "user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+    <li>
+        <a ng-click = configData.callbacks.logout()>
+            <i class = "ace-icon fa fa-power-off"></i>退出
+        </a>
+    </li>
+</ul>

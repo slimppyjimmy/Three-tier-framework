@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "933710",
+      "name": "团队",
+      "font_class": "tuandui",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "3248565",
+      "name": "开发",
+      "font_class": "kaifa",
+      "unicode": "e503",
+      "unicode_decimal": 58627
+    },
+    {
+      "icon_id": "4464993",
+      "name": "产品",
+      "font_class": "chanpin",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "5708860",
+      "name": "客户",
+      "font_class": "kehu",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "9143177",
+      "name": "申请",
+      "font_class": "shenqing",
+      "unicode": "e7e3",
+      "unicode_decimal": 59363
+    }
+  ]
+}
